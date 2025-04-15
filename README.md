@@ -1,16 +1,14 @@
-## Hi there 👋
+### Hi there 👋
 
-<!--
-**php-wiz/php-wiz** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<div align="center">
+  
+<a href="https://github.com/php-wiz"><img src="https://readme-typing-svg.demolab.com?font=Rowdies&pause=1000&color=3F79F7&width=435&lines=Hello,+I'm+PHPwiz+|+echo+'Magic';" alt="Typing SVG" /></a>
 
-Here are some ideas to get you started:
+</div>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<div align="center">
+  <a href="https://github.com/php-wiz"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=theisraelis&show_icons=true&theme=tokyonight&hide_border=true&count_private=true"/></a>
+<a href="https://github.com/php-wiz"><img height="160em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=theisraelis&layout=compact&theme=tokyonight&hide_border=true"/></a>
+  
+</div>
+
