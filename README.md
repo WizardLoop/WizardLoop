@@ -12,12 +12,9 @@
   &#8287;&#8287;&#8287;&#8287;&#8287;
 </p>
 
-<p align="center">
-  <a href="https://github.com/php-wiz">
-    <img width="150px" src="https://komarev.com/ghpvc/?username=php-wiz&color=3F79F7&style=for-the-badge&label=PROFILE+VIEWS" /></a>
-</p>
-
----
+<div align="center">
+<img src="https://komarev.com/ghpvc/?username=theisraelis&style=for-the-badge&color=3F83F8" alt="Profile Views"/>
+</div>
 
 <div align="center">
 <a href="https://github.com/php-wiz"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=php-wiz&show_icons=true&theme=tokyonight&hide_border=true&count_private=true"/></a>
@@ -26,22 +23,16 @@
 <a href="https://github.com/php-wiz"><img height="130em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=php-wiz&size_weight=0.5&count_weight=0.5&layout=compact&theme=tokyonight&hide_border=true"/></a>
 </div>
 
----
-
 <div align="center">
 <a href="https://github.com/php-wiz"><img height="180em" src="https://streak-stats.demolab.com/?user=php-wiz&theme=tokyonight&"/></a>
 </div>
 
----
 
 <p align="center">
-  <!-- Typing SVG - https://github.com/DenverCoder1/readme-typing-svg -->
   <a href="https://github.com/php-wiz">
     <img src="https://github-profile-trophy.vercel.app/?username=php-wiz&theme=tokyonight" /></a>
 </p>
 
----
-
 <div align="center">
-<a href="https://github.com/php-wiz"><img height="250em" src="https://quotes-github-readme.vercel.app/api?type=horizontal&border=true&author=created+by+php-wiz&theme=algolia&quote=echo+'Magic';+"/></a>
+<a href="https://github.com/php-wiz"><img src="https://github-readme-quotes-bay.vercel.app/quote?animation=grow_out_in&theme=tokyonight&quoteCategory=programming"/></a>
 </div>
