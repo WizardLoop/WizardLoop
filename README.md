@@ -5,17 +5,9 @@
     <img src="https://readme-typing-svg.demolab.com/?lines=Hello,+I'm+PHPwiz+|+echo+'magic';&font=Fira%20Code&center=true&width=440&height=45&color=3F79F7&vCenter=true&pause=1000&size=22" /></a>
 </p>
 
-<p align="center">
-  <a href="https://www.t.me/PHPwizBot"><img width="150px" src="https://img.shields.io/badge/MyBot-grey?logo=telegram"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-</p>
-
-
-
 <div align="center">
-  <a href="https://github.com/php-wiz"><img width="150px" src="https://img.shields.io/badge/echo-magic-blue?logo=github"/></a>
-  
-<img src="https://komarev.com/ghpvc/?username=theisraelis&style=for-the-badge&color=3F83F8" alt="Profile Views"/>
+  <a href="https://t.me/phpwiz"><img width="150px" src="https://img.shields.io/badge/echo-magic-blue?logo=telegram"/></a>
+ <a href="https://github.com/php-wiz"><img src="https://komarev.com/ghpvc/?username=php-wiz&style=for-the-badge&color=3F83F8" alt="Profile Views"/></a>
 </div>
 
 <div align="center">
