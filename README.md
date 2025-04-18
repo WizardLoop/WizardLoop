@@ -6,14 +6,11 @@
 </p>
 
 <p align="center">
-  <a href="https://www.t.me/PHPwiz"><img width="150px" alt="telegram" title="telegram" src="https://img.shields.io/badge/-@PHPwiz-blue?logo=telegram"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-</p>
-
-<p align="center">
   <a href="https://www.t.me/PHPwizBot"><img width="150px" src="https://img.shields.io/badge/MyBot-grey?logo=telegram"/></a>
   &#8287;&#8287;&#8287;&#8287;&#8287;
 </p>
+
+
 
 <div align="center">
   <a href="https://github.com/php-wiz"><img width="150px" src="https://img.shields.io/badge/echo-magic-blue?logo=github"/></a>
