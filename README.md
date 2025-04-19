@@ -21,7 +21,6 @@
 <a href="https://github.com/php-wiz"><img height="180em" src="https://streak-stats.demolab.com/?user=php-wiz&theme=tokyonight&"/></a>
 </div>
 
-
 <p align="center">
   <a href="https://github.com/php-wiz">
     <img src="https://github-profile-trophy.vercel.app/?username=php-wiz&theme=tokyonight" /></a>
