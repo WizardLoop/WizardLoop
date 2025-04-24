@@ -1,11 +1,7 @@
 ### Hi there 👋
 
 <p align="center">
-<b> 🧙‍♂️ phpwiz's Web Alchemical Lab 🧪 </b>
-</p>
-
-<p align="center">
-<b>A carefully crafted web potion, brewed with PHP and front-end wizardry.</b> ✨
+<b> 🧙‍♂️ phpwiz's Magic Alchemical Lab 🧪 </b>
 </p>
     
 <p align="center">
