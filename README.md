@@ -6,7 +6,7 @@
     
 <p align="center">
   <a href="https://github.com/WizardLoop">
-    <img src="https://readme-typing-svg.demolab.com/?lines=Hello,+I'm+WizardLoop+|+echo+'magic';&font=Fira%20Code&center=true&width=440&height=45&color=3F79F7&vCenter=true&pause=1000&size=22" /></a>
+    <img src="https://readme-typing-svg.demolab.com/?lines=Hello,+I'm+WizardLoop&font=Fira%20Code&center=true&width=440&height=45&color=3F79F7&vCenter=true&pause=1000&size=22" /></a>
 </p>
 
 <div align="center">
