@@ -42,3 +42,6 @@ jobs:
           # Stars
           plugin_stars: yes
           plugin_stars_limit: 4
+
+          # Gist
+          plugin_gists: yes
