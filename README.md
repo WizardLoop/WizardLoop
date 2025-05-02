@@ -14,6 +14,11 @@
  <a href="https://github.com/WizardLoop"><img src="https://komarev.com/ghpvc/?username=WizardLoop&style=for-the-badge&color=3F83F8" alt="Profile Views"/></a>
 </div>
 
+<p align="center">
+  <a href="https://github.com/WizardLoop">
+    <img src="https://github.com/wizardloop/wizardloop/blob/main/github-metrics.svg" /></a>
+</p>
+
 <div align="center">
 <a href="https://github.com/WizardLoop"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=WizardLoop&show_icons=true&theme=tokyonight&hide_border=true"/></a>
 </div>
@@ -25,11 +30,6 @@
 <div align="center">
 <a href="https://github.com/WizardLoop"><img height="180em" src="https://streak-stats.demolab.com/?user=WizardLoop&theme=tokyonight&"/></a>
 </div>
-
-<p align="center">
-  <a href="https://github.com/WizardLoop">
-    <img src="https://github-profile-trophy.vercel.app/?username=WizardLoop&theme=tokyonight" /></a>
-</p>
 
 <div align="center">
 <a href="https://github.com/WizardLoop"><img src="https://github-readme-quotes-bay.vercel.app/quote?animation=grow_out_in&theme=tokyonight&quoteCategory=programming"/></a>
