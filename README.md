@@ -14,10 +14,10 @@
  <a href="https://github.com/WizardLoop"><img src="https://komarev.com/ghpvc/?username=WizardLoop&style=for-the-badge&color=3F83F8" alt="Profile Views"/></a>
 </div>
 
-<p align="center">
+<div align="center">
   <a href="https://github.com/WizardLoop">
     <img src="https://github.com/wizardloop/wizardloop/blob/main/github-metrics.svg" /></a>
-</p>
+</div>
 
 <div align="center">
 <a href="https://github.com/WizardLoop"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=WizardLoop&show_icons=true&theme=tokyonight&hide_border=true"/></a>
