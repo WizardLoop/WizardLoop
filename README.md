@@ -15,11 +15,6 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/WizardLoop">
-    <img src="https://github.com/wizardloop/wizardloop/blob/main/github-metrics.svg" /></a>
-</div>
-
-<div align="center">
 <a href="https://github.com/WizardLoop"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=WizardLoop&show_icons=true&theme=tokyonight&hide_border=true"/></a>
 </div>
 
@@ -33,4 +28,9 @@
 
 <div align="center">
 <a href="https://github.com/WizardLoop"><img src="https://github-readme-quotes-bay.vercel.app/quote?animation=grow_out_in&theme=tokyonight&quoteCategory=programming"/></a>
+</div>
+
+<div align="center">
+  <a href="https://github.com/WizardLoop">
+    <img src="https://github.com/wizardloop/wizardloop/blob/main/github-metrics.svg" /></a>
 </div>
