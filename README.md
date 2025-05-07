@@ -10,7 +10,7 @@
 </p>
 
 <div align="center">
-  <a href="https://t.me/WizardLoop"><img width="150px" src="https://img.shields.io/badge/echo-magic-blue?logo=telegram"/></a>
+  <a href="https://t.me/WizardLoop"><img width="150px" src="https://img.shields.io/badge/contact-me-blue?logo=telegram"/></a>
  <a href="https://github.com/WizardLoop"><img src="https://komarev.com/ghpvc/?username=WizardLoop&style=for-the-badge&color=3F83F8" alt="Profile Views"/></a>
 </div>
 
@@ -20,10 +20,6 @@
 
 <div align="center">
 <a href="https://github.com/WizardLoop"><img height="130em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=WizardLoop&size_weight=0.5&count_weight=0.5&layout=compact&theme=tokyonight&hide_border=true"/></a>
-</div>
-
-<div align="center">
-<a href="https://github.com/WizardLoop"><img height="180em" src="https://streak-stats.demolab.com/?user=WizardLoop&theme=tokyonight&"/></a>
 </div>
 
 <div align="center">
