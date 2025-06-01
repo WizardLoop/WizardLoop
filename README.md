@@ -1,8 +1,4 @@
-### Hi there 👋
-
-<p align="center">
-<b> 🧙‍♂️ WizardLoop's Magic Alchemical Lab 🧪 </b>
-</p>
+### <p align="center"> <b> 🧙‍♂️ WizardLoop's Magic Alchemical Lab 🧪 </b> </p>
     
 <p align="center">
   <a href="https://github.com/WizardLoop">
