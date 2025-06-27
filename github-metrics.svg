@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="2088" class="">
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1455" class="">
     <defs>
         <style/>
     </defs>
@@ -2450,8 +2450,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#f503f27</div>
-                                        <div class="message">[JewishPulse]</div>
+                                        <div class="sha">#cbac418</div>
+                                        <div class="message">[Handlers]</div>
                                     </div>
                                 </div>
                             </section>
@@ -2470,200 +2470,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#3781708</div>
-                                        <div class="message">Update README.md</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        Pushed 22 commits in
-                                        <span class="repo">WizardLoop/MadelineProto</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">v8</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#748937b</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#329257b</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#cdc88ee</div>
-                                        <div class="message">Final fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#7f09e7e</div>
-                                        <div class="message">Handling fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#8a19669</div>
-                                        <div class="message">Improve cancellation logic</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#0a2a049</div>
-                                        <div class="message">Bump</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#21a44cf</div>
-                                        <div class="message">Improvement</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#9c3b9fc</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#9925e2a</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#8df9c8f</div>
-                                        <div class="message">Bump</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#3e33d64</div>
-                                        <div class="message">More logs</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#525a68f</div>
-                                        <div class="message">Cleanup properties</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#3512169</div>
-                                        <div class="message">Add HTMLs to phar</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#24d535b</div>
-                                        <div class="message">Cleanup</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#82e0bd2</div>
-                                        <div class="message">Finalize</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#f968ce2</div>
-                                        <div class="message">Cleanup</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#a312276</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#6e2713f</div>
-                                        <div class="message">Fix QR code logins</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#c6dabbd</div>
-                                        <div class="message">Use PHP-8.4 atom</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#f1e20c3</div>
-                                        <div class="message">Fix hangs</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        Pushed 38 commits in
-                                        <span class="repo">WizardLoop/MadelineProto</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">v8</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#23e7f50</div>
-                                        <div class="message">Fix CI</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#af25831</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#4b8941d</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#3a8662b</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#96dbd44</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#263d773</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#c6df785</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#465c8c6</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#7c334a1</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#0bd28a1</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#52436b8</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#807c86c</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#b7ee5bd</div>
-                                        <div class="message">Cleanup</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#bab31c0</div>
-                                        <div class="message">Cleanup</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#24170a9</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#55b9f80</div>
-                                        <div class="message">Fix</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#4ecce17</div>
-                                        <div class="message">Improve docker image</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#3764160</div>
-                                        <div class="message">Improve docker image</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#2358d82</div>
-                                        <div class="message">Bump deps</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#c05b023</div>
-                                        <div class="message">Switch builder</div>
+                                        <div class="sha">#ae5681a</div>
+                                        <div class="message">Create AdminPanel.php</div>
                                     </div>
                                 </div>
                             </section>
@@ -2682,8 +2490,48 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#1052887</div>
-                                        <div class="message">telegram bot update</div>
+                                        <div class="sha">#98285c9</div>
+                                        <div class="message">[Locales]</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row fill-width">
+                            <section class="activity">
+                                <div class="field">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
+                                    </svg>
+                                    <div class="content">
+                                        Pushed 1 commit in
+                                        <span class="repo">WizardLoop/JewishPulse</span>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div>on branch <span class="code">main</span></div>
+                                    <div class="commit">
+                                        <div class="sha">#42449db</div>
+                                        <div class="message">Create Lang.php</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="row fill-width">
+                            <section class="activity">
+                                <div class="field">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
+                                    </svg>
+                                    <div class="content">
+                                        Pushed 1 commit in
+                                        <span class="repo">WizardLoop/JewishPulse</span>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <div>on branch <span class="code">main</span></div>
+                                    <div class="commit">
+                                        <div class="sha">#99e8147</div>
+                                        <div class="message">Create Payments.php</div>
                                     </div>
                                 </div>
                             </section>
@@ -2693,7 +2541,7 @@
             </section>
             <footer>
                 <span>These metrics include private contributions</span>
-                <span>Last updated 27 Jun 2025, 15:23:28  with lowlighter/metrics@3.34.0</span>
+                <span>Last updated 27 Jun 2025, 15:35:23  with lowlighter/metrics@3.34.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
