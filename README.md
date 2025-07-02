@@ -18,9 +18,6 @@
 <a href="https://github.com/WizardLoop"><img height="130em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=WizardLoop&size_weight=0.5&count_weight=0.5&layout=compact&theme=tokyonight&hide_border=true"/></a>
 </div>
 
-<div align="center">
-<a href="https://github.com/WizardLoop"><img src="https://github-readme-quotes-bay.vercel.app/quote?animation=grow_out_in&theme=tokyonight&quoteCategory=programming"/></a>
-</div>
 
 <div align="center">
   <a href="https://github.com/WizardLoop">
