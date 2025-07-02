@@ -2453,8 +2453,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#62c77e0</div>
-                                        <div class="message">Create about.html</div>
+                                        <div class="sha">#e9a56ca</div>
+                                        <div class="message">Create SECURITY.md</div>
                                     </div>
                                 </div>
                             </section>
@@ -2473,8 +2473,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#c441bc6</div>
-                                        <div class="message">Create faq.html</div>
+                                        <div class="sha">#04b36dd</div>
+                                        <div class="message">Create FUNDING.yml</div>
                                     </div>
                                 </div>
                             </section>
@@ -2493,8 +2493,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#19e2943</div>
-                                        <div class="message">Create examples.html</div>
+                                        <div class="sha">#c5f564f</div>
+                                        <div class="message">Create CONTRIBUTING.md</div>
                                     </div>
                                 </div>
                             </section>
@@ -2513,8 +2513,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#189a748</div>
-                                        <div class="message">Create api.html</div>
+                                        <div class="sha">#736f808</div>
+                                        <div class="message">Create CODE_OF_CONDUCT.md</div>
                                     </div>
                                 </div>
                             </section>
@@ -2533,8 +2533,8 @@
                                 <div class="details">
                                     <div>on branch <span class="code">main</span></div>
                                     <div class="commit">
-                                        <div class="sha">#3fb9abc</div>
-                                        <div class="message">Create install.html</div>
+                                        <div class="sha">#468eff9</div>
+                                        <div class="message">Create PULL_REQUEST_TEMPLATE.md</div>
                                     </div>
                                 </div>
                             </section>
@@ -2544,7 +2544,7 @@
             </section>
             <footer>
                 <span>These metrics include private contributions</span>
-                <span>Last updated 2 Jul 2025, 15:35:21  with lowlighter/metrics@3.34.0</span>
+                <span>Last updated 2 Jul 2025, 15:46:18  with lowlighter/metrics@3.34.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
