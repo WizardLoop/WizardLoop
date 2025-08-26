@@ -2272,7 +2272,7 @@
                                     </svg>
                                     <div class="name">
                                         <span>amphp/file</span>
-                                        <span>starred 11 days ago</span>
+                                        <span>starred 12 days ago</span>
                                     </div>
                                 </div>
                                 <div class="field description">An abstraction layer and non-blocking file access solution that keeps your application responsive.</div>
@@ -2579,7 +2579,7 @@ Signed-off-by: Wizard Loop 🧙‍♂️ &lt;67387949+WizardLoop@users.noreply.g
             </section>
             <footer>
                 <span>These metrics include private contributions</span>
-                <span>Last updated 26 Aug 2025, 18:53:18  with lowlighter/metrics@3.34.0</span>
+                <span>Last updated 26 Aug 2025, 19:11:52  with lowlighter/metrics@3.34.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
