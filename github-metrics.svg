@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1667" class="">
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="1286" class="">
     <defs>
         <style/>
     </defs>
@@ -2528,108 +2528,12 @@
                                 </div>
                             </section>
                         </div>
-                        <div class="row fill-width">
-                            <section class="activity">
-                                <div class="field">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                        <path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm1.43.75a4.002 4.002 0 01-7.86 0H.75a.75.75 0 110-1.5h3.32a4.001 4.001 0 017.86 0h3.32a.75.75 0 110 1.5h-3.32z"/>
-                                    </svg>
-                                    <div class="content">
-                                        Pushed 42 commits in
-                                        <span class="repo">WizardLoop/MadelineProto</span>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div>on branch <span class="code">v8</span></div>
-                                    <div class="commit">
-                                        <div class="sha">#1fae26a</div>
-                                        <div class="message">Fixup path</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#c8a6afb</div>
-                                        <div class="message">Fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#4747ec3</div>
-                                        <div class="message">Fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#ba44115</div>
-                                        <div class="message">Bump</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#72161a2</div>
-                                        <div class="message">More fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#7fcb416</div>
-                                        <div class="message">fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#3dbe4a3</div>
-                                        <div class="message">fixes</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#37d6130</div>
-                                        <div class="message">Refactor</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#6b45d14</div>
-                                        <div class="message">Tmp</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#541cf7a</div>
-                                        <div class="message">WIP</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#2b1fde9</div>
-                                        <div class="message">Generate db schema</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#8e2cf45</div>
-                                        <div class="message">Cleanup</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#185d361</div>
-                                        <div class="message">Simplify fileref schema</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#bd1b7c9</div>
-                                        <div class="message">Temp hotfix for DialogSetChatTheme</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#8380ab3</div>
-                                        <div class="message">Bump</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#f1de7ce</div>
-                                        <div class="message">Add version</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#1bd1281</div>
-                                        <div class="message">Log schema issues</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#47de172</div>
-                                        <div class="message">Bump to layer 214</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#c269409</div>
-                                        <div class="message">Bump version</div>
-                                    </div>
-                                    <div class="commit">
-                                        <div class="sha">#12f5a33</div>
-                                        <div class="message">Fix for CDN handshake</div>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
                     </section>
                 </div>
             </section>
             <footer>
                 <span>These metrics include private contributions</span>
-                <span>Last updated 21 Sept 2025, 05:13:20  with lowlighter/metrics@3.34.0</span>
+                <span>Last updated 21 Sept 2025, 05:26:47  with lowlighter/metrics@3.34.0</span>
             </footer>
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
