@@ -11,11 +11,11 @@
 </div>
 
 <div align="center">
-<a href="https://github.com/WizardLoop"><img height="180em" src="https://github-readme-stats.vercel.app/api?username=WizardLoop&show_icons=true&theme=tokyonight&hide_border=true"/></a>
+<a href="https://github.com/WizardLoop"><img height="180em" src="https://github-readme-stats-sigma-lyart.vercel.app/api?username=WizardLoop&show_icons=true&theme=tokyonight&hide_border=true"/></a>
 </div>
 
 <div align="center">
-<a href="https://github.com/WizardLoop"><img height="130em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=WizardLoop&size_weight=0.5&count_weight=0.5&layout=compact&theme=tokyonight&hide_border=true"/></a>
+<a href="https://github.com/WizardLoop"><img height="130em" src="https://github-readme-stats-sigma-lyart.vercel.app/api/top-langs/?username=WizardLoop&size_weight=0.5&count_weight=0.5&layout=compact&theme=tokyonight&hide_border=true"/></a>
 </div>
 
 
