@@ -55,6 +55,7 @@ jobs:
 
           # WakaTime
           plugin_wakatime: yes
-          plugin_wakatime_api_key: ${{ secrets.WAKATIME_API_KEY }}
           plugin_wakatime_limit: 7
           plugin_wakatime_projects: yes
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_token: ${{ secrets.WAKATIME_API_KEY }}
