@@ -1,19 +1,18 @@
-
-      <svg
+<svg
         width="445"
-        height="165"
-        viewBox="0 0 445 165"
+        height="195"
+        viewBox="0 0 445 195"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
         aria-labelledby="descId"
-      >
+       font-family="Arial, Helvetica, sans-serif">
         <title id="titleId"></title>
         <desc id="descId"></desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
-            fill: #7145ad;
+            fill: #713cc0;
             animation: fadeInAnimation 0.8s ease-in-out forwards;
           }
           @supports(-moz-appearance: auto) {
@@ -38,7 +37,7 @@
       }
     }
     .stat {
-      font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; fill: #242133;
+      font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; fill: #2f174b;
     }
     @supports(-moz-appearance: auto) {
       /* Selector detects Firefox */
@@ -47,7 +46,7 @@
     .bold { font-weight: 700 }
     .lang-name {
       font: 400 11px "Segoe UI", Ubuntu, Sans-Serif;
-      fill: #242133;
+      fill: #2f174b;
     }
     .stagger {
       opacity: 0;
@@ -97,11 +96,11 @@
           class="card-bg"
           x="0.5"
           y="0.5"
-          rx="16"
+          rx="18"
           height="99%"
-          stroke="#e4ddee"
+          stroke="#d7c3ef"
           width="444"
-          fill="#ffffff"
+          fill="url(#amethyst-card-gradient)"
           stroke-opacity="1"
         />
 
@@ -116,7 +115,7 @@
         y="0"
         class="header"
         data-testid="header"
-      >Top languages</text>
+       font-family="Arial, Helvetica, sans-serif">Top languages</text>
     </g>
       </g>
     
@@ -138,7 +137,7 @@
           data-testid="lang-progress"
           x="0"
           y="0"
-          width="383.13"
+          width="378.38"
           height="8"
           fill="#4F5D95"
         />
@@ -146,9 +145,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="383.13"
+          x="378.38"
           y="0"
-          width="14.68"
+          width="19.52"
           height="8"
           fill="#3572A5"
         />
@@ -156,9 +155,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="387.81"
+          x="387.9"
           y="0"
-          width="14.129999999999999"
+          width="14.08"
           height="8"
           fill="#555555"
         />
@@ -166,9 +165,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="391.94"
+          x="391.97999999999996"
           y="0"
-          width="12.07"
+          width="12.04"
           height="8"
           fill="#e34c26"
         />
@@ -176,9 +175,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="394.01"
+          x="394.02"
           y="0"
-          width="10.62"
+          width="10.61"
           height="8"
           fill="#f1e05a"
         />
@@ -198,42 +197,42 @@
       <g transform="translate(0, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#4F5D95" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        PHP 96.99%
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
+        PHP 95.79%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        Python 1.18%
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
+        Python 2.41%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms">
       <circle cx="5" cy="6" r="5" fill="#555555" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        C 1.05%
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
+        C 1.03%
       </text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#e34c26" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
         HTML 0.52%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#f1e05a" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
         JavaScript 0.16%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms">
       <circle cx="5" cy="6" r="5" fill="#384d54" />
-      <text data-testid="lang-name" x="15" y="10" class='lang-name'>
+      <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
         Dockerfile 0.09%
       </text>
     </g>
@@ -243,5 +242,4 @@
     </svg>
   
         </g>
-      </svg>
-    
+      <defs id="amethyst-card-background"><linearGradient id="amethyst-card-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f9f4ff"/><stop offset="100%" stop-color="#eee0ff"/></linearGradient></defs><style id="amethyst-card-type">text,tspan{font-family:Arial, Helvetica, sans-serif !important;}.header{font-size:18px; font-weight:700; fill:#713cc0;}.stat{font-size:14px; fill:#2f174b;}.lang-name{font-size:14px; fill:#2f174b;}.icon{fill:#8952ce;}</style></svg>
