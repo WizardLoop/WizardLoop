@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest import mock
 
-from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg, summary_from_assets
+from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg, summary_from_assets, check_directory
 
 
 def fixture(name, count="12"):
@@ -98,6 +98,20 @@ class PublishTests(unittest.TestCase):
         self.assertEqual(self.snapshot(), self.before)
 
 
+    def test_check_directory_accepts_windows_crlf_checkout(self):
+        publish(self.stage, self.destination)
+        summary = self.destination / "summary.md"
+        summary.write_bytes(summary.read_bytes().replace(b"\n", b"\r\n"))
+        check_directory(self.destination)
+
+    def test_check_directory_rejects_changed_data_even_with_crlf(self):
+        publish(self.stage, self.destination)
+        summary = self.destination / "summary.md"
+        summary.write_bytes(summary.read_bytes().replace(b"**13**", b"**999**").replace(b"\n", b"\r\n"))
+        with self.assertRaises(InvalidAsset):
+            check_directory(self.destination)
+
+
 class ValidationTests(unittest.TestCase):
     def test_metrics_error_is_rejected_even_with_other_valid_sections(self):
         content = fixture("metrics-dark.svg").replace(
@@ -168,6 +182,29 @@ class ValidationTests(unittest.TestCase):
         records = [{"date": "2026-10-23", "text": "event", "url": "javascript:alert(1)"}]
         with self.assertRaises(InvalidAsset):
             theme_metrics(raw, "dark", records)
+
+
+
+    def test_summary_links_public_activity_to_github(self):
+        records = [{"date": "2026-10-23", "text": "Opened pull request #8 in WizardLoop/example", "url": "https://github.com/WizardLoop/example/pull/8"}]
+        data = {name: fixture(name) for name in FILES}
+        data["metrics-dark.svg"] = theme_metrics(fixture("metrics-dark.svg"), "dark", records)
+        summary = summary_from_assets(data).decode()
+        self.assertIn("](https://github.com/WizardLoop/example/pull/8)", summary)
+        self.assertIn(r"Opened pull request \#8", summary)
+
+
+
+    def test_activity_uses_mobile_readable_type_and_bounded_line_lengths(self):
+        records = [{"date": "2026-10-23", "text": "Published a release (v3.1.1) in WizardLoop/very-long-public-repository-name", "url": "https://github.com/WizardLoop/very-long-public-repository-name/releases"}]
+        result = theme_metrics(fixture("metrics-dark.svg"), "dark", records)
+        root = __import__("xml.etree.ElementTree", fromlist=["fromstring"]).fromstring(result)
+        activity = next(node for node in root.iter() if node.get("class") == "activity")
+        text_nodes = list(activity)
+        self.assertEqual(text_nodes[0].get("font-size"), "16")
+        self.assertEqual(text_nodes[1].get("font-size"), "12")
+        self.assertTrue(all(len(span.text or "") <= 47 for span in text_nodes[0]))
+        self.assertGreater(len(list(text_nodes[0])), 1)
 
 
 if __name__ == "__main__":

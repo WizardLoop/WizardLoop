@@ -149,24 +149,24 @@ def append_activity(text: str, theme: str, activities: list[dict]) -> str:
             raise InvalidAsset("Invalid public activity date")
         if not re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", event["url"]):
             raise InvalidAsset("Invalid public activity link")
-        wrapped = textwrap.wrap(event["text"], width=58) or [""]
+        wrapped = textwrap.wrap(event["text"], width=47) or [""]
         if len(wrapped) > 5:
             raise InvalidAsset("Unexpectedly long public activity title")
         spans = "".join(
-            f'<tspan x="26" dy="{0 if index == 0 else 19}">{escape(line)}</tspan>'
+            f'<tspan x="26" dy="{0 if index == 0 else 22}">{escape(line)}</tspan>'
             for index, line in enumerate(wrapped)
         )
         row = (
             f'<g class="activity" data-url="{escape(event["url"], quote=True)}">'
-            f'<text x="26" y="{y}" font-size="12.5" fill="{palette["text"]}">{spans}</text>'
-            f'<text x="26" y="{y + (len(wrapped) - 1) * 19 + 19}" font-size="10.5" fill="{palette["muted"]}">{event["date"]}</text>'
+            f'<text x="26" y="{y}" font-size="16" fill="{palette["text"]}">{spans}</text>'
+            f'<text x="26" y="{y + (len(wrapped) - 1) * 22 + 21}" font-size="12" fill="{palette["muted"]}">{event["date"]}</text>'
             '</g>'
         )
         rows.append(row)
-        y += len(wrapped) * 19 + 35
+        y += len(wrapped) * 22 + 36
     if not activities:
         rows.append(
-            f'<text x="26" y="{y}" font-size="12" fill="{palette["muted"]}">'
+            f'<text x="26" y="{y}" font-size="14" fill="{palette["muted"]}">'
             'No qualifying public events in the last 90 days.</text>'
         )
         y += 32
@@ -320,7 +320,7 @@ def summary_from_assets(candidates: dict[str, bytes]) -> bytes:
         for event in events:
             label = markdown_text(visible_text(event))
             url = event.get("data-url", "")
-            if re.fullmatch(r"https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", url):
+            if re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", url):
                 lines.append(f"- [{label}]({url})")
             else:
                 lines.append("- " + label)
@@ -378,6 +378,19 @@ def publish(stage: Path, destination: Path) -> list[str]:
     return changed
 
 
+
+def check_directory(directory: Path) -> None:
+    """Validate checked-out outputs, accepting platform newline conversion."""
+    assets = {name: (directory / name).read_bytes() for name in FILES}
+    for name, content in assets.items():
+        validate_svg(content, name)
+    expected = summary_from_assets(assets).decode("utf-8")
+    # Git may check text files out as CRLF on Windows. read_text normalizes EOLs
+    # without relaxing the requirement that the actual summary data must match.
+    if (directory / "summary.md").read_text(encoding="utf-8") != expected:
+        raise InvalidAsset("summary.md does not match the published SVG data")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -398,11 +411,7 @@ def main() -> None:
         changed = publish(args.stage, args.destination)
         print("Updated: " + ", ".join(changed) if changed else "No SVG content changed.")
     else:
-        for name in FILES:
-            validate_svg((args.directory / name).read_bytes(), name)
-        expected = summary_from_assets({name: (args.directory / name).read_bytes() for name in FILES})
-        if (args.directory / "summary.md").read_bytes() != expected:
-            raise InvalidAsset("summary.md does not match the published SVG data")
+        check_directory(args.directory)
         print("All six local SVGs and their text summary passed validation.")
 
 
