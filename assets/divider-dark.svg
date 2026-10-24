@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="36" viewBox="0 0 960 36" role="img" aria-labelledby="title desc">
+<title id="title">Loop Lab divider</title>
+<desc id="desc">Decorative technical linework.</desc>
+<rect width="960" height="36" fill="#0d1117"/>
+<path d="M2 18h430m96 0h430" fill="none" stroke="#2b2a3b"/>
+<path d="m472 18 8-8 8 8-8 8-8-8Z" fill="none" stroke="#b899ff"/>
+<rect x="450" y="16" width="4" height="4" fill="#9cd9c6"/><rect x="506" y="16" width="4" height="4" fill="#9cd9c6"/>
+</svg>

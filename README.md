@@ -1,11 +1,49 @@
-### <p align="center"> <b> 🧙‍♂️ WizardLoop's Magic Alchemical Lab 🧪 </b> </p>
-    
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/hero-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="assets/hero-mobile-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+  <img src="assets/hero-light.svg" width="960" alt="WizardLoop — Loop Lab. Turning ideas into useful tools. A little magic in every loop.">
+</picture>
+
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/divider-dark.svg">
+  <img src="assets/divider-light.svg" width="960" alt="">
+</picture>
+
+### The loop, in numbers.
+
+GitHub activity and repository statistics, refreshed daily.
+
 <p align="center">
-  <a href="https://github.com/WizardLoop">
-    <img src="https://readme-typing-svg.demolab.com/?lines=Hello,+I'm+Wizard+Loop&font=Fira%20Code&center=true&width=440&height=45&color=3F79F7&vCenter=true&pause=1000&size=22" /></a>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/stats-dark.svg">
+    <img src="profile/stats-light.svg" width="400" alt="WizardLoop GitHub statistics. A text summary is available below.">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
+    <img src="profile/top-langs-light.svg" width="400" alt="Languages represented in WizardLoop's public repositories. A text summary is available below.">
+  </picture>
 </p>
 
-<div align="center">
-  <a href="https://t.me/WizardLoop"><img width="150px" src="https://img.shields.io/badge/contact-me-blue?logo=telegram"/></a>
- <a href="https://github.com/WizardLoop"><img src="https://komarev.com/ghpvc/?username=WizardLoop&style=for-the-badge&color=3F83F8" alt="Profile Views"/></a>
-</div>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/metrics-dark.svg">
+    <img src="profile/metrics-light.svg" width="480" alt="WizardLoop activity, contributions and isometric contribution calendar. A text summary is available below.">
+  </picture>
+</p>
+
+<details>
+  <summary>Stats in text</summary>
+
+[Read the current statistics, languages and activity as text](profile/summary.md).
+
+</details>
+
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg">
+  <img src="assets/footer-light.svg" width="960" alt="Make. Refine. Repeat.">
+</picture>
