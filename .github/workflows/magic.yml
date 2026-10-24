@@ -12,6 +12,8 @@ on:
       - ".github/workflows/magic.yml"
       - "scripts/profile_assets.py"
       - "scripts/test_profile_assets.py"
+      - "scripts/fetch_activity.py"
+      - "scripts/test_fetch_activity.py"
 
 permissions:
   contents: read
@@ -35,7 +37,7 @@ jobs:
           ref: ${{ github.ref_name }}
 
       - name: Test failure retention and SVG validation
-        run: python3 -m unittest discover -s scripts -p 'test_profile_assets.py' -v
+        run: python3 -m unittest discover -s scripts -p 'test_*.py' -v
 
       - name: Check existing metrics credential
         env:
@@ -87,7 +89,7 @@ jobs:
           core_version: ""
           fail_on_error: "true"
 
-      - name: Generate contribution calendar and public activity
+      - name: Generate contribution calendar
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34.0
         with:
           token: ${{ secrets.METRICS_TOKEN }}
@@ -102,21 +104,13 @@ jobs:
           config_animations: "no"
           config_gemoji: "no"
           config_base64: "yes"
-          config_order: isocalendar, activity
+          config_order: isocalendar
           optimize: xml
           plugins_errors_fatal: "yes"
           retries: 2
           retries_delay: 15
           plugin_isocalendar: "yes"
           plugin_isocalendar_duration: full-year
-          plugin_activity: "yes"
-          plugin_activity_limit: 3
-          plugin_activity_days: 90
-          plugin_activity_visibility: public
-          plugin_activity_timestamps: "no"
-          plugin_activity_filter: push, issue, pr, release, review
-          plugin_activity_ignored: github-actions[bot], dependabot[bot]
-          plugin_activity_skipped: WizardLoop/WizardLoop
           extras_css: |
             svg { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
             .items-wrapper { padding: 18px 12px; box-sizing: border-box; border: 1px solid #302b43; border-radius: 16px; }
@@ -127,10 +121,16 @@ jobs:
             .activity .details { font-size: 12px; }
             .activity .commit .message { width: 345px; }
 
+      - name: Fetch public activity with reduced-payload support
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/fetch_activity.py --output .profile-stage/activity.json
+
       - name: Build matching metrics themes from the same data
         run: |
           python3 scripts/profile_assets.py prepare-metrics \
             --raw /metrics_renders/loop-lab-metrics.svg \
+            --activity .profile-stage/activity.json \
             --stage .profile-stage
 
       - name: Publish the complete validated set
@@ -140,13 +140,13 @@ jobs:
             --destination profile
           python3 scripts/profile_assets.py check --directory profile
 
-      - name: Commit only changed SVGs
+      - name: Commit only changed SVGs and text summary
         env:
           TARGET_BRANCH: ${{ github.ref_name }}
         run: |
           git add -- profile/stats-dark.svg profile/stats-light.svg \
             profile/top-langs-dark.svg profile/top-langs-light.svg \
-            profile/metrics-dark.svg profile/metrics-light.svg
+            profile/metrics-dark.svg profile/metrics-light.svg profile/summary.md
           if git diff --cached --quiet; then
             echo "No data or visual changes; no commit needed."
             exit 0

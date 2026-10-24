@@ -7,10 +7,13 @@ The repository is changed only after every staged SVG passes validation.
 from __future__ import annotations
 
 import argparse
+from html import escape
+import json
 import os
 from pathlib import Path
 import re
 import tempfile
+import textwrap
 import xml.etree.ElementTree as ET
 
 SVG_NS = "http://www.w3.org/2000/svg"
@@ -113,7 +116,7 @@ def validate_svg(content: bytes, filename: str) -> ET.Element:
         if not languages or not all(re.search(r"\d+(?:\.\d+)?%", item) for item in languages):
             raise InvalidAsset(f"{filename}: missing measured language percentages")
     elif filename.startswith("metrics"):
-        if "contributions calendar" not in labels or "recent activity" not in labels:
+        if "contributions calendar" not in labels or (filename != "metrics-raw.svg" and "recent activity" not in labels):
             raise InvalidAsset(f"{filename}: missing calendar or activity section")
         if "best streak" not in labels or "average per day" not in labels:
             raise InvalidAsset(f"{filename}: missing calendar statistics")
@@ -128,7 +131,64 @@ def validate_svg(content: bytes, filename: str) -> ET.Element:
     return root
 
 
-def theme_metrics(raw: bytes, theme: str) -> bytes:
+
+def append_activity(text: str, theme: str, activities: list[dict]) -> str:
+    """Append a native-SVG feed; no brittle upstream activity payload assumptions."""
+    if not isinstance(activities, list) or len(activities) > 3:
+        raise InvalidAsset("Activity snapshot must contain zero to three public events")
+    root = ET.fromstring(text)
+    old_height = float(root.get("height", "").removesuffix("px"))
+    palette = PALETTES[theme]
+    top = old_height + 4
+    y = top + 60
+    rows = []
+    for event in activities:
+        if not isinstance(event, dict) or not all(isinstance(event.get(k), str) for k in ("date", "text", "url")):
+            raise InvalidAsset("Malformed public activity record")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", event["date"]):
+            raise InvalidAsset("Invalid public activity date")
+        if not re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", event["url"]):
+            raise InvalidAsset("Invalid public activity link")
+        wrapped = textwrap.wrap(event["text"], width=58) or [""]
+        if len(wrapped) > 5:
+            raise InvalidAsset("Unexpectedly long public activity title")
+        spans = "".join(
+            f'<tspan x="26" dy="{0 if index == 0 else 19}">{escape(line)}</tspan>'
+            for index, line in enumerate(wrapped)
+        )
+        row = (
+            f'<g class="activity" data-url="{escape(event["url"], quote=True)}">'
+            f'<text x="26" y="{y}" font-size="12.5" fill="{palette["text"]}">{spans}</text>'
+            f'<text x="26" y="{y + (len(wrapped) - 1) * 19 + 19}" font-size="10.5" fill="{palette["muted"]}">{event["date"]}</text>'
+            '</g>'
+        )
+        rows.append(row)
+        y += len(wrapped) * 19 + 35
+    if not activities:
+        rows.append(
+            f'<text x="26" y="{y}" font-size="12" fill="{palette["muted"]}">'
+            'No qualifying public events in the last 90 days.</text>'
+        )
+        y += 32
+    box_height = y - top + 4
+    group = (
+        f'<g id="loop-lab-public-activity">'
+        f'<rect x="0.5" y="{top}" width="479" height="{box_height}" rx="16" '
+        f'fill="{palette["background"]}" stroke="{palette["border"]}"/>'
+        f'<text x="26" y="{top + 30}" font-size="16" font-weight="600" fill="{palette["accent"]}">'
+        'Recent activity</text>'
+        + "".join(rows) + '</g>'
+    )
+    height = int(top + box_height + 1)
+    text = re.sub(
+        r"<svg\b([^>]*)>",
+        lambda match: "<svg" + re.sub(r'height="[^"]*"', f'height="{height}"', match.group(1), count=1) + ">",
+        text, count=1,
+    )
+    return text.rsplit("</svg>", 1)[0] + group + "</svg>"
+
+
+def theme_metrics(raw: bytes, theme: str, activities: list[dict] | None = None) -> bytes:
     validate_svg(raw, "metrics-raw.svg")
     palette = PALETTES[theme]
     text = raw.decode("utf-8").strip()
@@ -155,7 +215,7 @@ def theme_metrics(raw: bytes, theme: str) -> bytes:
     insertion = (
         '<title id="loop-lab-metrics-title">WizardLoop contribution calendar and recent public activity</title>'
         '<desc id="loop-lab-metrics-description">A full-year isometric contribution calendar, streak statistics, '
-        'and up to three recent public GitHub events. Generated from GitHub by lowlighter metrics.</desc>'
+        'and up to three recent public GitHub events. Generated from GitHub API data and lowlighter metrics.</desc>'
         f'<style id="loop-lab-palette">{css}</style>'
     )
     text = re.sub(
@@ -167,13 +227,16 @@ def theme_metrics(raw: bytes, theme: str) -> bytes:
     # Place the palette after the generator's styles so it takes precedence.
     point = text.index("<foreignObject")
     text = text[:point] + insertion + text[point:]
+    if activities is not None:
+        text = append_activity(text, theme, activities)
     return (text + "\n").encode("utf-8")
 
 
-def prepare_metrics(raw_path: Path, stage: Path) -> None:
+def prepare_metrics(raw_path: Path, stage: Path, activity_path: Path) -> None:
     raw = raw_path.read_bytes()
+    activities = json.loads(activity_path.read_text(encoding='utf-8'))
     candidates = {
-        f"metrics-{theme}.svg": theme_metrics(raw, theme)
+        f"metrics-{theme}.svg": theme_metrics(raw, theme, activities)
         for theme in PALETTES
     }
     for name, content in candidates.items():
@@ -181,6 +244,98 @@ def prepare_metrics(raw_path: Path, stage: Path) -> None:
     stage.mkdir(parents=True, exist_ok=True)
     for name, content in candidates.items():
         (stage / name).write_bytes(content)
+
+
+
+def markdown_text(value: str) -> str:
+    """Keep public event text inert inside a Markdown list item."""
+    return re.sub(r"([\\\x60*_{}\[\]<>#|])", r"\\\1", value)
+
+
+def summary_from_assets(candidates: dict[str, bytes]) -> bytes:
+    """Derive an accessible text companion from the exact published SVG data."""
+    stats = validate_svg(candidates["stats-dark.svg"], "stats-dark.svg")
+    languages = validate_svg(candidates["top-langs-dark.svg"], "top-langs-dark.svg")
+    metrics = validate_svg(candidates["metrics-dark.svg"], "metrics-dark.svg")
+    lines = [
+        "# GitHub activity, in text", "",
+        "This text is generated from the same validated GitHub data as the profile cards.",
+        "Figures update with the cards; an unsuccessful refresh keeps the previous complete set.", "",
+        "## GitHub stats", "",
+    ]
+    parents = {child: parent for parent in stats.iter() for child in parent}
+    fields = ("stars", "commits", "prs", "issues", "contribs")
+    fallback_labels = {
+        "stars": "Total stars earned", "commits": "Commits",
+        "prs": "Pull requests", "issues": "Issues",
+        "contribs": "Repositories contributed to",
+    }
+    for field in fields:
+        node = next(node for node in stats.iter() if node.get("data-testid") == field)
+        siblings = [
+            visible_text(sibling).rstrip(": ")
+            for sibling in parents.get(node, ())
+            if local_name(sibling.tag) == "text" and sibling is not node
+        ]
+        label = siblings[0] if siblings else fallback_labels[field]
+        lines.append(f"- {markdown_text(label)}: **{markdown_text(visible_text(node))}**")
+    lines.extend(["", "## Top languages", ""])
+    for node in languages.iter():
+        if node.get("data-testid") == "lang-name":
+            lines.append(f"- {markdown_text(visible_text(node))}")
+    lines.extend([
+        "",
+        "Language percentages describe analyzed repository content, not proficiency or coding time.",
+        "", "## Contribution calendar", "",
+        "The isometric view covers the last year of GitHub contributions. These totals may include "
+        "private contribution aggregates visible to the existing metrics token; private project names are not shown.",
+        "",
+    ])
+    wanted = ("Current streak", "Best streak", "Highest in a day at", "Average per day at")
+    facts = []
+    for node in metrics.iter():
+        if "field" not in node.get("class", "").split():
+            continue
+        value = visible_text(node)
+        if value.startswith(wanted):
+            facts.append(value)
+    if not facts:
+        # The validator permits plain SVG text as well as lowlighter's XHTML.
+        for node in metrics.iter():
+            if local_name(node.tag) == "text":
+                value = visible_text(node)
+                if "Best streak" in value:
+                    facts.append(value)
+    lines.extend("- " + markdown_text(value) for value in facts)
+    lines.extend([
+        "",
+        "GitHub contribution counts can include commits, issues, pull requests, and reviews.",
+        "", "## Recent public activity", "",
+    ])
+    events = [
+        node for node in metrics.iter()
+        if local_name(node.tag) in {"section", "g"} and "activity" in node.get("class", "").split()
+    ]
+    if events:
+        for event in events:
+            label = markdown_text(visible_text(event))
+            url = event.get("data-url", "")
+            if re.fullmatch(r"https://github\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", url):
+                lines.append(f"- [{label}]({url})")
+            else:
+                lines.append("- " + label)
+    else:
+        lines.append("No qualifying recent public activity was returned.")
+    lines.extend([
+        "",
+        "The activity feed includes at most three public events from the past 90 days.",
+        "Profile-repository updates and common automation bots are excluded.",
+        "",
+        "Sources: [GitHub Readme Stats](https://github.com/stats-organization/github-readme-stats-action) "
+        "and [lowlighter/metrics](https://github.com/lowlighter/metrics).",
+        "",
+    ])
+    return "\n".join(lines).encode("utf-8")
 
 
 def publish(stage: Path, destination: Path) -> list[str]:
@@ -193,11 +348,12 @@ def publish(stage: Path, destination: Path) -> list[str]:
         content = source.read_bytes()
         validate_svg(content, name)
         candidates[name] = content
+    candidates['summary.md'] = summary_from_assets(candidates)
     previous = {
         name: (destination / name).read_bytes() if (destination / name).is_file() else None
-        for name in FILES
+        for name in candidates
     }
-    changed = [name for name in FILES if candidates[name] != previous[name]]
+    changed = [name for name in candidates if candidates[name] != previous[name]]
     if not changed:
         return []
     destination.mkdir(parents=True, exist_ok=True)
@@ -228,6 +384,7 @@ def main() -> None:
     prepare = sub.add_parser("prepare-metrics")
     prepare.add_argument("--raw", required=True, type=Path)
     prepare.add_argument("--stage", required=True, type=Path)
+    prepare.add_argument("--activity", required=True, type=Path)
     update = sub.add_parser("publish")
     update.add_argument("--stage", required=True, type=Path)
     update.add_argument("--destination", required=True, type=Path)
@@ -235,7 +392,7 @@ def main() -> None:
     check.add_argument("--directory", required=True, type=Path)
     args = parser.parse_args()
     if args.command == "prepare-metrics":
-        prepare_metrics(args.raw, args.stage)
+        prepare_metrics(args.raw, args.stage, args.activity)
         print("Prepared dark and light metrics from one GitHub snapshot.")
     elif args.command == "publish":
         changed = publish(args.stage, args.destination)
@@ -243,7 +400,10 @@ def main() -> None:
     else:
         for name in FILES:
             validate_svg((args.directory / name).read_bytes(), name)
-        print("All six local SVGs passed validation.")
+        expected = summary_from_assets({name: (args.directory / name).read_bytes() for name in FILES})
+        if (args.directory / "summary.md").read_bytes() != expected:
+            raise InvalidAsset("summary.md does not match the published SVG data")
+        print("All six local SVGs and their text summary passed validation.")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest import mock
 
-from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg
+from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg, summary_from_assets
 
 
 def fixture(name, count="12"):
@@ -40,6 +40,7 @@ class PublishTests(unittest.TestCase):
         for name in FILES:
             (self.stage / name).write_bytes(fixture(name, "13"))
             (self.destination / name).write_bytes(fixture(name, "12"))
+        (self.destination / "summary.md").write_bytes(summary_from_assets(self.snapshot()))
         self.before = self.snapshot()
 
     def snapshot(self):
@@ -47,10 +48,11 @@ class PublishTests(unittest.TestCase):
 
     def test_complete_batch_publishes_only_changed_files(self):
         changed = publish(self.stage, self.destination)
-        self.assertEqual(changed, ["stats-dark.svg", "stats-light.svg"])
+        self.assertEqual(changed, ["stats-dark.svg", "stats-light.svg", "summary.md"])
         self.assertEqual(
             self.snapshot(),
-            {name: (self.stage / name).read_bytes() for name in FILES},
+            {**{name: (self.stage / name).read_bytes() for name in FILES},
+             "summary.md": summary_from_assets({name: (self.stage / name).read_bytes() for name in FILES})},
         )
 
     def test_no_change_preserves_file_timestamps(self):
@@ -128,6 +130,44 @@ class ValidationTests(unittest.TestCase):
         self.assertIn(b"Best streak 4. Average per day 1.", light)
         self.assertIn(b"aria-labelledby", dark)
         self.assertNotEqual(dark, light)
+
+
+    def test_summary_has_real_card_values_and_no_style_content(self):
+        data = {name: fixture(name, "37") for name in FILES}
+        summary = summary_from_assets(data).decode()
+        self.assertIn("**37**", summary)
+        self.assertIn("Python 100%", summary)
+        self.assertIn("Best streak 4", summary)
+        self.assertNotIn("<svg", summary)
+        self.assertNotIn("brightness1", summary)
+
+    def test_summary_escapes_untrusted_activity_markdown(self):
+        data = {name: fixture(name) for name in FILES}
+        data["metrics-dark.svg"] = data["metrics-dark.svg"].replace(
+            b"</foreignObject>",
+            b'<section class="activity">Pushed [link](https://example.com) &lt;img&gt;</section></foreignObject>'
+        )
+        summary = summary_from_assets(data).decode()
+        self.assertIn(r"\[link\]", summary)
+        self.assertIn(r"\&lt;img\&gt;".replace("&lt;", "<").replace("&gt;", ">"), summary)
+
+
+
+    def test_native_activity_accepts_reduced_public_records_and_preserves_calendar(self):
+        raw = fixture("metrics-dark.svg").replace(b"<text>Recent activity</text>", b"")
+        records = [{"date": "2026-10-23", "text": "Opened pull request #8 in WizardLoop/example", "url": "https://github.com/WizardLoop/example/pull/8"}]
+        result = theme_metrics(raw, "dark", records)
+        validate_svg(result, "metrics-dark.svg")
+        self.assertIn(b"Opened pull request #8", result)
+        self.assertIn(b"Recent activity", result)
+        self.assertIn(b"Best streak 4", result)
+        self.assertGreater(int(__import__("xml.etree.ElementTree", fromlist=["fromstring"]).fromstring(result).get("height")), 480)
+
+    def test_malformed_public_activity_cannot_be_published(self):
+        raw = fixture("metrics-dark.svg")
+        records = [{"date": "2026-10-23", "text": "event", "url": "javascript:alert(1)"}]
+        with self.assertRaises(InvalidAsset):
+            theme_metrics(raw, "dark", records)
 
 
 if __name__ == "__main__":

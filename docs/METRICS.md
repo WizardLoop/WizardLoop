@@ -1,6 +1,8 @@
 # Profile metrics
 
-The README loads six SVGs committed to this repository. Visitors do not call a
+The README loads six SVGs committed to this repository. A matching accessible
+[plain-text summary](../profile/summary.md) contains the real numbers and public
+activity text extracted from those same SVGs. Visitors do not call a
 third-party stats endpoint. The daily workflow fetches real data from GitHub,
 renders into a staging directory, and publishes a complete validated batch.
 
@@ -21,7 +23,12 @@ not match the trigger paths. No workflow modifies another repository.
 | --- | --- | --- |
 | GitHub Actions / GitHub API | Daily updates and real account statistics | The existing GitHub account. The automatic, repository-scoped `GITHUB_TOKEN` is used for public stats and committing assets. Standard hosted runners are free for public repositories. No paid service is required. |
 | GitHub Readme Stats Action | Local dark/light Stats and Top Languages cards | Runs inside GitHub Actions. No external hosting account or new secret. Uses the automatic `GITHUB_TOKEN`. |
-| lowlighter/metrics | Isometric contribution calendar and up to three recent public events | Reuses the existing repository secret `METRICS_TOKEN`. A valid GitHub personal access token is needed; the public plugins do not require private-repository access. No payment or additional account. |
+| lowlighter/metrics | Isometric contribution calendar | Reuses the existing repository secret `METRICS_TOKEN`. A valid GitHub personal access token is needed; the public plugins do not require private-repository access. No payment or additional account. |
+
+Recent public activity is fetched directly from GitHub's public Events API with the automatic token.
+This small local collector accepts reduced event payloads without requiring
+missing author, commit-array, or pull-request metadata. It adds no service, account,
+secret, or payment. A fetch failure fails the complete refresh.
 
 The former WakaTime settings and `WAKATIME_API_KEY` reference have been removed.
 WakaTime is not needed or enabled. No secret values belong in files or SVGs.
@@ -51,7 +58,7 @@ scope. Existing secrets are reused; the workflow does not create or change them.
   changes colors and accessibility descriptions, never counts or bar geometry.
 
 No private repository, issue, or commit text is intentionally displayed by the
-configured activity plugin. The token may have broader permissions from its
+configured public activity collector. The token may have broader permissions from its
 previous use; that does not enable private activity in this workflow.
 
 ## Preservation and validation
@@ -60,13 +67,13 @@ previous use; that does not enable private activity in this workflow.
    `fail_on_error: true`. A failed API request must fail the step.
 2. Render metrics with `output_action: none` and
    `plugins_errors_fatal: yes`; lowlighter does not commit independently.
-3. Build both metrics themes, then validate all six SVGs as a batch: valid XML,
+3. Fetch public activity, append it to both metrics themes, then validate all six SVGs as a batch: valid XML,
    measured dimensions, expected data fields, complete calendar, no error
    panels, executable elements, or externally loaded images/styles.
-4. Only then replace the published files. The publisher rolls back an
+4. Derive the text summary from the validated data. Only then replace the published files. The publisher rolls back an
    interrupted local installation. A workflow failure before the final push
    leaves the last committed valid batch available to the README.
-5. Commit only when the SVG bytes changed. No “last checked” timestamp is
+5. Commit only when the SVG or text-summary bytes changed. No “last checked” timestamp is
    inserted solely to force a daily commit. Push failures remain failures;
    they are not masked.
 
@@ -77,7 +84,7 @@ can reject it safely; rerun the workflow against the latest branch.
 Run the meaningful failure-retention tests locally with:
 
 ```sh
-python3 -m unittest discover -s scripts -p 'test_profile_assets.py' -v
+python3 -m unittest discover -s scripts -p 'test_*.py' -v
 python3 scripts/profile_assets.py check --directory profile
 ```
 
