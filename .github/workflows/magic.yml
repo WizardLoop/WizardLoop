@@ -1,44 +1,157 @@
-name: Metrics
+name: Update profile metrics
+
 on:
-  schedule: [{cron: '0 */2 * * *'}]  
+  schedule:
+    - cron: "37 3 * * *"
   workflow_dispatch:
-  push: {branches: ["master", "main"]}
+  # Bootstrap and validate the redesign on its dedicated branch.
+  # Generated SVG commits do not match these paths and cannot retrigger this.
+  push:
+    branches: ["codex/loop-lab-profile"]
+    paths:
+      - ".github/workflows/magic.yml"
+      - "scripts/profile_assets.py"
+      - "scripts/test_profile_assets.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-metrics-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  github-metrics:
+  refresh:
+    name: Generate, validate, then publish
+    if: github.repository == 'WizardLoop/WizardLoop'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write
     steps:
-      - uses: lowlighter/metrics@latest
+      - name: Check out the triggering branch
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Test failure retention and SVG validation
+        run: python3 -m unittest discover -s scripts -p 'test_profile_assets.py' -v
+
+      - name: Check existing metrics credential
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        run: |
+          if [ -z "$METRICS_TOKEN" ]; then
+            echo "::error::The existing METRICS_TOKEN secret is required. Published SVGs were not changed."
+            exit 1
+          fi
+
+      - name: Generate GitHub stats - dark
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=0d1117&title_color=b899ff&text_color=eeeffa&icon_color=9cd9c6&border_color=302b43&disable_animations=true&number_format=long
+          path: .profile-stage/stats-dark.svg
+          token: ${{ github.token }}
+          # Empty selects the action's lockfile-pinned bundled core (2.2.0).
+          core_version: ""
+          fail_on_error: "true"
+
+      - name: Generate GitHub stats - light
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=ffffff&title_color=7145ad&text_color=242133&icon_color=327b68&border_color=e4ddee&disable_animations=true&number_format=long
+          path: .profile-stage/stats-light.svg
+          token: ${{ github.token }}
+          core_version: ""
+          fail_on_error: "true"
+
+      - name: Generate top languages - dark
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=0d1117&title_color=b899ff&text_color=eeeffa&border_color=302b43&disable_animations=true
+          path: .profile-stage/top-langs-dark.svg
+          token: ${{ github.token }}
+          core_version: ""
+          fail_on_error: "true"
+
+      - name: Generate top languages - light
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=ffffff&title_color=7145ad&text_color=242133&border_color=e4ddee&disable_animations=true
+          path: .profile-stage/top-langs-light.svg
+          token: ${{ github.token }}
+          core_version: ""
+          fail_on_error: "true"
+
+      - name: Generate contribution calendar and public activity
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34.0
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          user: wizardloop
+          user: WizardLoop
+          filename: loop-lab-metrics.svg
+          output_action: none
           template: classic
-          base: header, repositories, metadata
+          base: ""
           config_timezone: Asia/Jerusalem
-          
-          # Languages
-          plugin_languages: yes
-          plugin_languages_colors: github
-          plugin_languages_limit: 8
-          plugin_languages_sections: most-used
-          plugin_languages_threshold: 0%
-          
-          # Isocalendar
-          plugin_isocalendar: yes
+          config_display: regular
+          config_padding: 0, 16
+          config_animations: "no"
+          config_gemoji: "no"
+          config_base64: "yes"
+          config_order: isocalendar, activity
+          optimize: xml
+          plugins_errors_fatal: "yes"
+          retries: 2
+          retries_delay: 15
+          plugin_isocalendar: "yes"
           plugin_isocalendar_duration: full-year
+          plugin_activity: "yes"
+          plugin_activity_limit: 3
+          plugin_activity_days: 90
+          plugin_activity_visibility: public
+          plugin_activity_timestamps: "no"
+          plugin_activity_filter: push, issue, pr, release, review
+          plugin_activity_ignored: github-actions[bot], dependabot[bot]
+          plugin_activity_skipped: WizardLoop/WizardLoop
+          extras_css: |
+            svg { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+            .items-wrapper { padding: 18px 12px; box-sizing: border-box; border: 1px solid #302b43; border-radius: 16px; }
+            .items-wrapper > section + section { margin-top: 22px; }
+            h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+            h3 { font-size: 13px; }
+            .activity .field { max-width: 444px; }
+            .activity .details { font-size: 12px; }
+            .activity .commit .message { width: 345px; }
 
-          # Gist
-          plugin_gists: yes
+      - name: Build matching metrics themes from the same data
+        run: |
+          python3 scripts/profile_assets.py prepare-metrics \
+            --raw /metrics_renders/loop-lab-metrics.svg \
+            --stage .profile-stage
 
-          # line
-          plugin_lines: yes
+      - name: Publish the complete validated set
+        run: |
+          python3 scripts/profile_assets.py publish \
+            --stage .profile-stage \
+            --destination profile
+          python3 scripts/profile_assets.py check --directory profile
 
-          # code
-          plugin_code: yes
-
-          # Wakatime
-          plugin_wakatime_limit: 7
-          plugin_wakatime_projects: yes
-          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
-          plugin_wakatime_token: ${{ secrets.WAKATIME_API_KEY }}
+      - name: Commit only changed SVGs
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        run: |
+          git add -- profile/stats-dark.svg profile/stats-light.svg \
+            profile/top-langs-dark.svg profile/top-langs-light.svg \
+            profile/metrics-dark.svg profile/metrics-light.svg
+          if git diff --cached --quiet; then
+            echo "No data or visual changes; no commit needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: refresh profile metrics [skip ci]"
+          git push origin "HEAD:$TARGET_BRANCH"
