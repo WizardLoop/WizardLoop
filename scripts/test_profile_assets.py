@@ -163,6 +163,18 @@ class ValidationTests(unittest.TestCase):
         self.assertNotIn("<svg", summary)
         self.assertNotIn("brightness1", summary)
 
+    def test_summary_uses_the_generated_letter_rank(self):
+        for grade in ("B+", "A-"):
+            with self.subTest(grade=grade):
+                data = {name: fixture(name) for name in FILES}
+                data["stats-dark.svg"] = data["stats-dark.svg"].replace(
+                    b"</svg>",
+                    f'<text class="rank-text" data-testid="level-rank-icon">{grade}</text></svg>'.encode(),
+                )
+                data["stats-dark.svg"] = style_card(data["stats-dark.svg"], "stats-dark.svg")
+                summary = summary_from_assets(data).decode()
+                self.assertIn(f"GitHub Readme Stats grade: **{grade}**", summary)
+
     def test_summary_escapes_untrusted_activity_markdown(self):
         data = {name: fixture(name) for name in FILES}
         data["metrics-dark.svg"] = data["metrics-dark.svg"].replace(

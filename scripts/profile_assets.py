@@ -359,6 +359,9 @@ def summary_from_assets(candidates: dict[str, bytes]) -> bytes:
         ]
         label = siblings[0] if siblings else fallback_labels[field]
         lines.append(f"- {markdown_text(label)}: **{markdown_text(visible_text(node))}**")
+    rank = next((node for node in stats.iter() if "rank-text" in node.get("class", "").split()), None)
+    if rank is not None:
+        lines.append(f"- GitHub Readme Stats grade: **{markdown_text(visible_text(rank))}**")
     lines.extend(["", "## Top languages", ""])
     for node in languages.iter():
         if node.get("data-testid") == "lang-name":

@@ -41,7 +41,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: stats
-          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=1b1033&title_color=c9a3ff&text_color=f4edff&icon_color=b49aff&border_color=493064&disable_animations=true&number_format=long
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=false&rank_icon=default&card_width=445&border_radius=16&bg_color=1b1033&title_color=c9a3ff&text_color=f4edff&icon_color=b49aff&ring_color=c9a3ff&border_color=493064&disable_animations=true&number_format=long
           path: .profile-stage/stats-dark.svg
           token: ${{ github.token }}
           # Empty selects the action's lockfile-pinned bundled core (2.2.0).
@@ -52,7 +52,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: stats
-          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=f5efff&title_color=713cc0&text_color=2f174b&icon_color=8952ce&border_color=d7c3ef&disable_animations=true&number_format=long
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=false&rank_icon=default&card_width=445&border_radius=16&bg_color=f5efff&title_color=713cc0&text_color=2f174b&icon_color=8952ce&ring_color=713cc0&border_color=d7c3ef&disable_animations=true&number_format=long
           path: .profile-stage/stats-light.svg
           token: ${{ github.token }}
           core_version: ""
