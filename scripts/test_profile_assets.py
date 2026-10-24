@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest import mock
 
-from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg, summary_from_assets, check_directory
+from profile_assets import FILES, InvalidAsset, publish, theme_metrics, validate_svg, summary_from_assets, check_directory, style_card, FONT_STACK
 
 
 def fixture(name, count="12"):
@@ -22,10 +22,16 @@ def fixture(name, count="12"):
             '<path fill="#9be9a8" filter="url(#brightness1)" d="M0,0 1,1"/>' * 101
         )
         content = '<foreignObject width="480" height="480">' + content + "</foreignObject>"
-    return (
-        '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480">'
+    card = name.startswith(("stats-", "top-langs-"))
+    width = 445 if card else 480
+    height = (195 if name.startswith("stats-") else 165) if card else 480
+    if card:
+        content = '<rect data-testid="card-bg" x="0.5" y="0.5" width="444" height="99%" fill="#fff"/>' + content
+    result = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}">'
         + content + "</svg>"
     ).encode()
+    return style_card(result, name) if card else result
 
 
 class PublishTests(unittest.TestCase):
@@ -138,12 +144,14 @@ class ValidationTests(unittest.TestCase):
         light = theme_metrics(raw, "light")
         validate_svg(dark, "metrics-dark.svg")
         validate_svg(light, "metrics-light.svg")
-        self.assertIn(b"#44315f", dark)
-        self.assertIn(b"#dccaf4", light)
+        self.assertIn(b"#5c328c", dark)
+        self.assertIn(b"#c9a4ed", light)
         self.assertIn(b"Best streak 4. Average per day 1.", dark)
         self.assertIn(b"Best streak 4. Average per day 1.", light)
         self.assertIn(b"aria-labelledby", dark)
         self.assertNotEqual(dark, light)
+        self.assertIn(b"background: transparent !important", dark)
+        self.assertIn(b"background: transparent !important", light)
 
 
     def test_summary_has_real_card_values_and_no_style_content(self):
@@ -201,10 +209,46 @@ class ValidationTests(unittest.TestCase):
         root = __import__("xml.etree.ElementTree", fromlist=["fromstring"]).fromstring(result)
         activity = next(node for node in root.iter() if node.get("class") == "activity")
         text_nodes = list(activity)
-        self.assertEqual(text_nodes[0].get("font-size"), "16")
-        self.assertEqual(text_nodes[1].get("font-size"), "12")
-        self.assertTrue(all(len(span.text or "") <= 47 for span in text_nodes[0]))
+        self.assertEqual(text_nodes[0].get("font-size"), "18")
+        self.assertEqual(text_nodes[1].get("font-size"), "14")
+        self.assertTrue(all(len(span.text or "") <= 40 for span in text_nodes[0]))
         self.assertGreater(len(list(text_nodes[0])), 1)
+
+
+
+class CardStylingTests(unittest.TestCase):
+    def test_repeated_styling_does_not_create_daily_commit_churn(self):
+        for name in FILES[:4]:
+            once = fixture(name)
+            self.assertEqual(style_card(once, name), once)
+
+    def test_stats_and_languages_share_height_without_changing_data(self):
+        import xml.etree.ElementTree as ET
+        stats = ET.fromstring(fixture("stats-dark.svg", "241"))
+        languages = ET.fromstring(fixture("top-langs-dark.svg"))
+        self.assertEqual(stats.get("height"), "195")
+        self.assertEqual(languages.get("height"), "195")
+        self.assertEqual(stats.get("viewBox"), languages.get("viewBox"))
+        counts = [node.text for node in stats.iter() if node.get("data-testid") in ("stars", "commits", "prs", "issues", "contribs")]
+        self.assertEqual(counts, ["241"] * 5)
+        self.assertIn("Python 100%", " ".join(languages.itertext()))
+
+    def test_standalone_svg_text_has_explicit_sans_serif_fallback(self):
+        import xml.etree.ElementTree as ET
+        for name in FILES:
+            content = fixture(name)
+            if name.startswith("metrics-"):
+                content = theme_metrics(content, "dark")
+            root = ET.fromstring(content)
+            text = [node for node in root.iter() if node.tag.rsplit("}", 1)[-1] in {"text", "tspan"}]
+            self.assertTrue(text)
+            self.assertTrue(all(node.get("font-family") == FONT_STACK for node in text))
+            self.assertIn(b"font-family:Arial, Helvetica, sans-serif !important", content.replace(b"font-family: Arial", b"font-family:Arial"))
+
+    def test_error_response_is_rejected_before_styling(self):
+        error = b'<svg xmlns="http://www.w3.org/2000/svg" width="445" height="195"><text>Something went wrong</text></svg>'
+        with self.assertRaises(InvalidAsset):
+            style_card(error, "stats-dark.svg")
 
 
 if __name__ == "__main__":

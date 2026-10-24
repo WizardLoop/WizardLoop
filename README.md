@@ -5,16 +5,10 @@
   <img src="assets/hero-light.svg" width="960" alt="WizardLoop — Loop Lab. Turning ideas into useful tools. A little magic in every loop.">
 </picture>
 
-<br>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/divider-dark.svg">
   <img src="assets/divider-light.svg" width="960" alt="">
 </picture>
-
-### The loop, in numbers.
-
-GitHub activity and repository statistics, refreshed daily.
 
 <p align="center">
   <picture>
@@ -44,6 +38,8 @@ GitHub activity and repository statistics, refreshed daily.
 <br>
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/footer-mobile-dark.svg">
+  <source media="(max-width: 600px)" srcset="assets/footer-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg">
   <img src="assets/footer-light.svg" width="960" alt="Make. Refine. Repeat.">
 </picture>

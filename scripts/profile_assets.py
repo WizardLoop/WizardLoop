@@ -22,16 +22,19 @@ FILES = (
     "top-langs-dark.svg", "top-langs-light.svg",
     "metrics-dark.svg", "metrics-light.svg",
 )
+FONT_STACK = "Arial, Helvetica, sans-serif"
 PALETTES = {
     "dark": {
-        "background": "#0d1117", "text": "#eeeffa", "muted": "#a7a4bb",
-        "accent": "#b899ff", "mint": "#9cd9c6", "border": "#302b43",
-        "levels": ("#201d2b", "#44315f", "#70509c", "#9673cd", "#b899ff"),
+        "background": "#1b1033", "text": "#f4edff", "muted": "#b8a3d5",
+        "accent": "#c9a3ff", "icon": "#b49aff", "border": "#493064",
+        "gradient_start": "#281343", "gradient_end": "#130a24",
+        "levels": ("#2a1b40", "#5c328c", "#8b4bce", "#b177ee", "#d8b4ff"),
     },
     "light": {
-        "background": "#ffffff", "text": "#242133", "muted": "#615b72",
-        "accent": "#7145ad", "mint": "#327b68", "border": "#e4ddee",
-        "levels": ("#eee9f5", "#dccaf4", "#bd9de5", "#9870cd", "#7145ad"),
+        "background": "#f5efff", "text": "#2f174b", "muted": "#70598d",
+        "accent": "#713cc0", "icon": "#8952ce", "border": "#d7c3ef",
+        "gradient_start": "#f9f4ff", "gradient_end": "#eee0ff",
+        "levels": ("#e5d7f5", "#c9a4ed", "#a476db", "#8451bf", "#64309e"),
     },
 }
 GITHUB_CALENDAR_COLORS = (
@@ -132,6 +135,75 @@ def validate_svg(content: bytes, filename: str) -> ET.Element:
 
 
 
+
+def set_svg_attribute(tag: str, name: str, value: str) -> str:
+    """Change one quoted SVG attribute without reserializing numeric geometry."""
+    attribute = re.compile(r"\b" + re.escape(name) + r"\s*=\s*([\"']).*?\1", re.S)
+    rendered = f'{name}="{escape(value, quote=True)}"'
+    if attribute.search(tag):
+        return attribute.sub(lambda _: rendered, tag, count=1)
+    position = -2 if tag.endswith('/>') else -1
+    return tag[:position] + " " + rendered + tag[position:]
+
+
+def explicit_sans(text: str) -> str:
+    # Presentation attributes also cover standalone renderers that ignore CSS
+    # font shorthands; the final stylesheet covers browsers' CSS cascade.
+    return re.sub(
+        r"<(?:text|tspan)\b[^>]*>",
+        lambda match: set_svg_attribute(match.group(), "font-family", FONT_STACK),
+        text,
+    )
+
+
+def style_card(content: bytes, filename: str) -> bytes:
+    """Theme an upstream card, preserving every value and chart coordinate."""
+    root = validate_svg(content, filename)
+    if not filename.startswith(("stats-", "top-langs-")):
+        raise InvalidAsset(f"{filename}: expected a stats or language card")
+    theme = "dark" if filename.endswith("-dark.svg") else "light"
+    palette = PALETTES[theme]
+    text = content.decode("utf-8").strip()
+    # Reapplying the design is byte-for-byte stable.
+    text = re.sub(r'<defs id="amethyst-card-background">.*?</defs>', '', text, flags=re.S)
+    text = re.sub(r'<style id="amethyst-card-type">.*?</style>', '', text, flags=re.S)
+    width = float(root.get("width", "").removesuffix("px"))
+    height = max(195, float(root.get("height", "").removesuffix("px")))
+    def root_attributes(match: re.Match) -> str:
+        tag = set_svg_attribute(match.group(), "height", f"{height:g}")
+        tag = set_svg_attribute(tag, "viewBox", f"0 0 {width:g} {height:g}")
+        return set_svg_attribute(tag, "font-family", FONT_STACK)
+    text = re.sub(r"<svg\b[^>]*>", root_attributes, text, count=1)
+    def background(match: re.Match) -> str:
+        tag = set_svg_attribute(match.group(), "fill", "url(#amethyst-card-gradient)")
+        tag = set_svg_attribute(tag, "stroke", palette["border"])
+        return set_svg_attribute(tag, "rx", "18")
+    text, count = re.subn(r'<rect\b[^>]*data-testid=["\']card-bg["\'][^>]*/?>', background, text, count=1)
+    if count != 1:
+        raise InvalidAsset(f"{filename}: missing upstream card background")
+    text = explicit_sans(text)
+    defs = (
+        '<defs id="amethyst-card-background">'
+        '<linearGradient id="amethyst-card-gradient" x1="0" y1="0" x2="1" y2="1">'
+        f'<stop offset="0%" stop-color="{palette["gradient_start"]}"/>'
+        f'<stop offset="100%" stop-color="{palette["gradient_end"]}"/>'
+        '</linearGradient></defs>'
+    )
+    css = (
+        '<style id="amethyst-card-type">'
+        f'text,tspan{{font-family:{FONT_STACK} !important;}}'
+        f'.header{{font-size:18px; font-weight:700; fill:{palette["accent"]};}}'
+        f'.stat{{font-size:14px; fill:{palette["text"]};}}'
+        f'.lang-name{{font-size:14px; fill:{palette["text"]};}}'
+        f'.icon{{fill:{palette["icon"]};}}'
+        '</style>'
+    )
+    text = text.rsplit('</svg>', 1)[0] + defs + css + '</svg>\n'
+    result = text.encode('utf-8')
+    validate_svg(result, filename)
+    return result
+
+
 def append_activity(text: str, theme: str, activities: list[dict]) -> str:
     """Append a native-SVG feed; no brittle upstream activity payload assumptions."""
     if not isinstance(activities, list) or len(activities) > 3:
@@ -149,21 +221,21 @@ def append_activity(text: str, theme: str, activities: list[dict]) -> str:
             raise InvalidAsset("Invalid public activity date")
         if not re.fullmatch(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_./-]+", event["url"]):
             raise InvalidAsset("Invalid public activity link")
-        wrapped = textwrap.wrap(event["text"], width=47) or [""]
+        wrapped = textwrap.wrap(event["text"], width=40) or [""]
         if len(wrapped) > 5:
             raise InvalidAsset("Unexpectedly long public activity title")
         spans = "".join(
-            f'<tspan x="26" dy="{0 if index == 0 else 22}">{escape(line)}</tspan>'
+            f'<tspan x="26" dy="{0 if index == 0 else 24}">{escape(line)}</tspan>'
             for index, line in enumerate(wrapped)
         )
         row = (
             f'<g class="activity" data-url="{escape(event["url"], quote=True)}">'
-            f'<text x="26" y="{y}" font-size="16" fill="{palette["text"]}">{spans}</text>'
-            f'<text x="26" y="{y + (len(wrapped) - 1) * 22 + 21}" font-size="12" fill="{palette["muted"]}">{event["date"]}</text>'
+            f'<text x="26" y="{y}" font-size="18" fill="{palette["text"]}">{spans}</text>'
+            f'<text x="26" y="{y + (len(wrapped) - 1) * 24 + 23}" font-size="14" fill="{palette["muted"]}">{event["date"]}</text>'
             '</g>'
         )
         rows.append(row)
-        y += len(wrapped) * 22 + 36
+        y += len(wrapped) * 24 + 40
     if not activities:
         rows.append(
             f'<text x="26" y="{y}" font-size="14" fill="{palette["muted"]}">'
@@ -173,9 +245,9 @@ def append_activity(text: str, theme: str, activities: list[dict]) -> str:
     box_height = y - top + 4
     group = (
         f'<g id="loop-lab-public-activity">'
-        f'<rect x="0.5" y="{top}" width="479" height="{box_height}" rx="16" '
-        f'fill="{palette["background"]}" stroke="{palette["border"]}"/>'
-        f'<text x="26" y="{top + 30}" font-size="16" font-weight="600" fill="{palette["accent"]}">'
+        f'<rect x="0.5" y="{top}" width="479" height="{box_height}" rx="18" '
+        f'fill="url(#amethyst-metrics-gradient)" stroke="{palette["border"]}"/>'
+        f'<text x="26" y="{top + 30}" font-size="18" font-weight="700" fill="{palette["accent"]}">'
         'Recent activity</text>'
         + "".join(rows) + '</g>'
     )
@@ -203,12 +275,15 @@ def theme_metrics(raw: bytes, theme: str, activities: list[dict] | None = None) 
         return prefix + color_map.get(color.lower(), color) + suffix
     text = re.sub(r'(fill=["\'])(#[0-9a-fA-F]{6})(["\'])', recolor, text)
     css = f"""
-      :root {{ background: {palette['background']}; color: {palette['text']}; }}
-      .items-wrapper {{ background: {palette['background']}; border-color: {palette['border']}; color: {palette['text']}; }}
+      :root {{ background: transparent !important; color: {palette['text']}; }}
+      .items-wrapper {{ font-size: 16px; background: {palette['background']}; background: linear-gradient(135deg, {palette['gradient_start']}, {palette['gradient_end']}); border-color: {palette['border']}; color: {palette['text']}; }}
       svg {{ color: {palette['text']}; }}
+      svg, text, tspan, .items-wrapper, .items-wrapper * {{ font-family: {FONT_STACK} !important; }}
       h1, h2, h3 {{ color: {palette['accent']} !important; }}
-      .field svg {{ fill: {palette['accent']}; }}
-      .activity .repo, .activity .issue, .activity .commit .sha {{ color: {palette['mint']}; }}
+      h2 {{ font-size: 18px; font-weight: 700; }}
+      h3 {{ font-size: 14px; }}
+      .field svg {{ fill: {palette['icon']}; }}
+      .activity .repo, .activity .issue, .activity .commit .sha {{ color: {palette['icon']}; }}
       .activity .details, .activity .timestamp, .activity .code {{ color: {palette['muted']}; }}
       .activity .code {{ background: {palette['border']}; }}
     """
@@ -217,6 +292,10 @@ def theme_metrics(raw: bytes, theme: str, activities: list[dict] | None = None) 
         '<desc id="loop-lab-metrics-description">A full-year isometric contribution calendar, streak statistics, '
         'and up to three recent public GitHub events. Generated from GitHub API data and lowlighter metrics.</desc>'
         f'<style id="loop-lab-palette">{css}</style>'
+        '<defs><linearGradient id="amethyst-metrics-gradient" x1="0" y1="0" x2="1" y2="1">'
+        f'<stop offset="0%" stop-color="{palette["gradient_start"]}"/>'
+        f'<stop offset="100%" stop-color="{palette["gradient_end"]}"/>'
+        '</linearGradient></defs>'
     )
     text = re.sub(
         r"<svg\b([^>]*)>",
@@ -229,6 +308,7 @@ def theme_metrics(raw: bytes, theme: str, activities: list[dict] | None = None) 
     text = text[:point] + insertion + text[point:]
     if activities is not None:
         text = append_activity(text, theme, activities)
+    text = explicit_sans(text)
     return (text + "\n").encode("utf-8")
 
 
@@ -344,6 +424,8 @@ def publish(stage: Path, destination: Path) -> list[str]:
         if not source.is_file() or source.is_symlink():
             raise InvalidAsset(f"{name}: missing regular staged file")
         content = source.read_bytes()
+        if name.startswith(("stats-", "top-langs-")):
+            content = style_card(content, name)
         validate_svg(content, name)
         candidates[name] = content
     candidates['summary.md'] = summary_from_assets(candidates)

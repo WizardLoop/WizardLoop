@@ -6,16 +6,16 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 ## GitHub stats
 
 - Total Stars Earned: **79**
-- Total Commits (last year): **293**
+- Total Commits (last year): **300**
 - Total PRs: **51**
 - Total Issues: **2**
 - Contributed to (last year): **13**
 
 ## Top languages
 
-- PHP 96.99%
-- Python 1.18%
-- C 1.05%
+- PHP 95.79%
+- Python 2.41%
+- C 1.03%
 - HTML 0.52%
 - JavaScript 0.16%
 - Dockerfile 0.09%

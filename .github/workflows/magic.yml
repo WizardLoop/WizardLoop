@@ -41,7 +41,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: stats
-          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=0d1117&title_color=b899ff&text_color=eeeffa&icon_color=9cd9c6&border_color=302b43&disable_animations=true&number_format=long
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=1b1033&title_color=c9a3ff&text_color=f4edff&icon_color=b49aff&border_color=493064&disable_animations=true&number_format=long
           path: .profile-stage/stats-dark.svg
           token: ${{ github.token }}
           # Empty selects the action's lockfile-pinned bundled core (2.2.0).
@@ -52,7 +52,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: stats
-          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=ffffff&title_color=7145ad&text_color=242133&icon_color=327b68&border_color=e4ddee&disable_animations=true&number_format=long
+          options: username=WizardLoop&count_private=false&custom_title=GitHub%20stats&contribs_include_own_repos=true&show_icons=true&hide_rank=true&card_width=445&border_radius=16&bg_color=f5efff&title_color=713cc0&text_color=2f174b&icon_color=8952ce&border_color=d7c3ef&disable_animations=true&number_format=long
           path: .profile-stage/stats-light.svg
           token: ${{ github.token }}
           core_version: ""
@@ -62,7 +62,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: top-langs
-          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=0d1117&title_color=b899ff&text_color=eeeffa&border_color=302b43&disable_animations=true
+          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=1b1033&title_color=c9a3ff&text_color=f4edff&border_color=493064&disable_animations=true
           path: .profile-stage/top-langs-dark.svg
           token: ${{ github.token }}
           core_version: ""
@@ -72,7 +72,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
         with:
           card: top-langs
-          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=ffffff&title_color=7145ad&text_color=242133&border_color=e4ddee&disable_animations=true
+          options: username=WizardLoop&count_private=false&custom_title=Top%20languages&layout=compact&langs_count=6&card_width=445&border_radius=16&bg_color=f5efff&title_color=713cc0&text_color=2f174b&border_color=d7c3ef&disable_animations=true
           path: .profile-stage/top-langs-light.svg
           token: ${{ github.token }}
           core_version: ""
@@ -101,11 +101,11 @@ jobs:
           plugin_isocalendar: "yes"
           plugin_isocalendar_duration: full-year
           extras_css: |
-            svg { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-            .items-wrapper { padding: 18px 12px; box-sizing: border-box; border: 1px solid #302b43; border-radius: 16px; }
+            svg, .items-wrapper, .items-wrapper * { font-family: Arial, Helvetica, sans-serif !important; }
+            .items-wrapper { font-size: 16px; padding: 18px 12px; box-sizing: border-box; border: 1px solid #493064; border-radius: 18px; }
             .items-wrapper > section + section { margin-top: 22px; }
-            h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-            h3 { font-size: 13px; }
+            h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+            h3 { font-size: 14px; }
 
       - name: Fetch public activity with reduced-payload support
         env:
