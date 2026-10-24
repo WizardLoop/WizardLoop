@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="36" viewBox="0 0 960 36" role="img" aria-labelledby="title desc">
-<title id="title">Loop Lab divider</title>
-<desc id="desc">Decorative technical linework.</desc>
-<rect width="960" height="36" fill="#ffffff"/>
-<path d="M2 18h430m96 0h430" fill="none" stroke="#e4ddee"/>
-<path d="m472 18 8-8 8 8-8 8-8-8Z" fill="none" stroke="#7350b4"/>
-<rect x="450" y="16" width="4" height="4" fill="#367a67"/><rect x="506" y="16" width="4" height="4" fill="#367a67"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="36" viewBox="0 0 960 36" role="img"><title>Loop Lab divider</title>
+<defs><linearGradient id="line"><stop stop-color="#713cc0" stop-opacity="0"/><stop offset=".5" stop-color="#713cc0" stop-opacity=".65"/><stop offset="1" stop-color="#713cc0" stop-opacity="0"/></linearGradient></defs>
+<path d="M32 18h400m96 0h400" fill="none" stroke="url(#line)"/>
+<path d="m473 18 7-7 7 7-7 7-7-7Z" fill="#713cc0" fill-opacity=".12" stroke="#713cc0" stroke-opacity=".7"/>
+<circle cx="452" cy="18" r="1.5" fill="#713cc0"/><circle cx="508" cy="18" r="1.5" fill="#713cc0"/>
 </svg>
