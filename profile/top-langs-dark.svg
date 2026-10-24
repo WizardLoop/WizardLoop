@@ -19,7 +19,7 @@
             /* Selector detects Firefox */
             .header { font-size: 15.5px; }
           }
-          
+
     @keyframes slideInAnimation {
       from {
         width: 0;
@@ -59,10 +59,10 @@
       animation: growWidthAnimation 0.6s ease-in-out forwards;
     }
     .progress-background { fill: #ddd; }
-    
-          
 
-          
+
+
+
       /* Animations */
       @keyframes scaleInAnimation {
         from {
@@ -80,16 +80,16 @@
           opacity: 1;
         }
       }
-    
+
           * { animation-duration: 0s !important; animation-delay: 0s !important; }
         </style>
 
-        
+
         <defs>
-          
-          
+
+
         </defs>
-        
+
 
         <rect
           data-testid="card-bg"
@@ -104,7 +104,7 @@
           stroke-opacity="1"
         />
 
-        
+
       <g
         data-testid="card-title"
         transform="translate(25, 35)"
@@ -118,20 +118,20 @@
        font-family="Arial, Helvetica, sans-serif">Top languages</text>
     </g>
       </g>
-    
+
 
         <g
           data-testid="main-card-body"
           transform="translate(0, 55)"
         >
-          
+
     <svg data-testid="lang-items" x="25">
-      
-  
+
+
       <mask id="rect-mask">
           <rect x="0" y="0" width="395" height="8" fill="white" rx="5"/>
         </mask>
-        
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -141,7 +141,7 @@
           height="8"
           fill="#4F5D95"
         />
-      
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -151,7 +151,7 @@
           height="8"
           fill="#3572A5"
         />
-      
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -161,7 +161,7 @@
           height="8"
           fill="#555555"
         />
-      
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -171,7 +171,7 @@
           height="8"
           fill="#e34c26"
         />
-      
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -181,7 +181,7 @@
           height="8"
           fill="#f1e05a"
         />
-      
+
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
@@ -191,8 +191,8 @@
           height="8"
           fill="#384d54"
         />
-      
-      
+
+
     <g transform="translate(0, 25)">
       <g transform="translate(0, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
@@ -238,8 +238,8 @@
     </g>
   </g></g>
     </g>
-  
+
     </svg>
-  
+
         </g>
       <defs id="amethyst-card-background"><linearGradient id="amethyst-card-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#281343"/><stop offset="100%" stop-color="#130a24"/></linearGradient></defs><style id="amethyst-card-type">text,tspan{font-family:Arial, Helvetica, sans-serif !important;}.header{font-size:18px; font-weight:700; fill:#c9a3ff;}.stat{font-size:14px; fill:#f4edff;}.lang-name{font-size:14px; fill:#f4edff;}.icon{fill:#b49aff;}</style></svg>

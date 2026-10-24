@@ -199,6 +199,8 @@ def style_card(content: bytes, filename: str) -> bytes:
         '</style>'
     )
     text = text.rsplit('</svg>', 1)[0] + defs + css + '</svg>\n'
+    # Upstream rank markup includes whitespace-only lines; keep commits clean.
+    text = '\n'.join(line.rstrip() for line in text.splitlines()) + '\n'
     result = text.encode('utf-8')
     validate_svg(result, filename)
     return result
