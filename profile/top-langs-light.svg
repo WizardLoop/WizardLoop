@@ -137,7 +137,7 @@
           data-testid="lang-progress"
           x="0"
           y="0"
-          width="377.87"
+          width="377.77"
           height="8"
           fill="#4F5D95"
         />
@@ -145,9 +145,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="377.87"
+          x="377.77"
           y="0"
-          width="10.04"
+          width="10.15"
           height="8"
           fill="#3572A5"
         />
@@ -155,7 +155,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="387.91"
+          x="387.91999999999996"
           y="0"
           width="14.07"
           height="8"
@@ -165,7 +165,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="391.98"
+          x="391.98999999999995"
           y="0"
           width="12.04"
           height="8"
@@ -175,7 +175,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="394.02000000000004"
+          x="394.03"
           y="0"
           width="10.61"
           height="8"
@@ -185,7 +185,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="394.63000000000005"
+          x="394.64"
           y="0"
           width="10.37"
           height="8"
@@ -198,14 +198,14 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#4F5D95" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        PHP 95.66%
+        PHP 95.64%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        Python 2.54%
+        Python 2.57%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
