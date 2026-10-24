@@ -7,22 +7,6 @@
 
 <br>
 
-**I build useful software, thoughtful tools, and things that move.**<br>
-Open-source bots and digital products, shaped by code, design, and a little curiosity.
-
-<br>
-
-### Tools in the loop
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/toolbox-mobile-dark.svg">
-  <source media="(max-width: 600px)" srcset="assets/toolbox-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="assets/toolbox-dark.svg">
-  <img src="assets/toolbox-light.svg" width="960" alt="Working with PHP, Python, C, JavaScript, HTML and CSS, Shell, Telegram, Lottie, Docker, SQLite, Git and GitHub.">
-</picture>
-
-<br>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/divider-dark.svg">
   <img src="assets/divider-light.svg" width="960" alt="">
