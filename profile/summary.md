@@ -41,4 +41,3 @@ GitHub contribution counts can include commits, issues, pull requests, and revie
 The activity feed includes at most three public events from the past 90 days.
 Profile-repository updates and common automation bots are excluded.
 
-Sources: [GitHub Readme Stats](https://github.com/stats-organization/github-readme-stats-action) and [lowlighter/metrics](https://github.com/lowlighter/metrics).

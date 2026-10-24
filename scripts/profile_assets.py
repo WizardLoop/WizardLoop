@@ -331,8 +331,6 @@ def summary_from_assets(candidates: dict[str, bytes]) -> bytes:
         "The activity feed includes at most three public events from the past 90 days.",
         "Profile-repository updates and common automation bots are excluded.",
         "",
-        "Sources: [GitHub Readme Stats](https://github.com/stats-organization/github-readme-stats-action) "
-        "and [lowlighter/metrics](https://github.com/lowlighter/metrics).",
         "",
     ])
     return "\n".join(lines).encode("utf-8")
