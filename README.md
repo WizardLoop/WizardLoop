@@ -32,19 +32,23 @@ Open-source bots and digital products, shaped by code, design, and a little curi
 
 GitHub activity and repository statistics, refreshed daily.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="profile/stats-dark.svg">
-  <img src="profile/stats-light.svg" width="400" alt="WizardLoop GitHub statistics. A text summary is available below.">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
-  <img src="profile/top-langs-light.svg" width="400" alt="Languages represented in WizardLoop's public repositories. A text summary is available below.">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/stats-dark.svg">
+    <img src="profile/stats-light.svg" width="400" alt="WizardLoop GitHub statistics. A text summary is available below.">
+  </picture>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
+    <img src="profile/top-langs-light.svg" width="400" alt="Languages represented in WizardLoop's public repositories. A text summary is available below.">
+  </picture>
+</p>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="profile/metrics-dark.svg">
-  <img src="profile/metrics-light.svg" width="480" alt="WizardLoop activity, contributions and isometric contribution calendar. A text summary is available below.">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/metrics-dark.svg">
+    <img src="profile/metrics-light.svg" width="480" alt="WizardLoop activity, contributions and isometric contribution calendar. A text summary is available below.">
+  </picture>
+</p>
 
 <details>
   <summary>Stats in text</summary>
@@ -59,14 +63,3 @@ GitHub activity and repository statistics, refreshed daily.
   <source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg">
   <img src="assets/footer-light.svg" width="960" alt="Make. Refine. Repeat.">
 </picture>
-
-<details>
-  <summary>Credits & updates</summary>
-
-Original Loop Lab artwork created for this profile with OpenAI image generation. Typography: [Space Grotesk](https://github.com/floriankarsten/space-grotesk), with its [SIL Open Font License](assets/fonts/OFL-SpaceGrotesk.txt). Tool symbols are original geometric illustrations.
-
-Data: [GitHub Readme Stats](https://github.com/stats-organization/github-readme-stats-action) and [lowlighter/metrics](https://github.com/lowlighter/metrics). Local SVG workflow inspired by [david-lev](https://github.com/david-lev/david-lev). Language percentages describe repository content, not proficiency. The calendar may include private contribution totals; activity entries are public.
-
-Updated daily at 03:37 UTC, or manually from **Actions → Update profile metrics → Run workflow**. Uses the existing `METRICS_TOKEN` and automatic `GITHUB_TOKEN`; no additional account, hosting service, or paid integration is required. Failed updates retain the last valid output, and unchanged data creates no commit.
-
-</details>

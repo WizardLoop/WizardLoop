@@ -4,17 +4,6 @@ on:
   schedule:
     - cron: "37 3 * * *"
   workflow_dispatch:
-  # Bootstrap and validate the redesign on its dedicated branch.
-  # Generated SVG commits do not match these paths and cannot retrigger this.
-  push:
-    branches: ["codex/loop-lab-profile"]
-    paths:
-      - ".github/workflows/magic.yml"
-      - "scripts/profile_assets.py"
-      - "scripts/test_profile_assets.py"
-      - "scripts/fetch_activity.py"
-      - "scripts/test_fetch_activity.py"
-
 permissions:
   contents: read
 
@@ -117,9 +106,6 @@ jobs:
             .items-wrapper > section + section { margin-top: 22px; }
             h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
             h3 { font-size: 13px; }
-            .activity .field { max-width: 444px; }
-            .activity .details { font-size: 12px; }
-            .activity .commit .message { width: 345px; }
 
       - name: Fetch public activity with reduced-payload support
         env:
