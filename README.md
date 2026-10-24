@@ -13,7 +13,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="profile/stats-dark.svg">
-    <img src="profile/stats-light.svg" width="400" alt="WizardLoop GitHub statistics. A text summary is available below.">
+    <img src="profile/stats-light.svg" width="400" alt="WizardLoop GitHub statistics and calculated letter rank. A text summary is available below.">
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
