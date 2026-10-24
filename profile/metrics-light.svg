@@ -1675,10 +1675,7 @@
 .items-wrapper { padding: 18px 12px; box-sizing: border-box; border: 1px solid #302b43; border-radius: 16px; }
 .items-wrapper &gt; section + section { margin-top: 22px; }
 h2 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-h3 { font-size: 13px; }
-.activity .field { max-width: 444px; }
-.activity .details { font-size: 12px; }
-.activity .commit .message { width: 345px; }</style>
+h3 { font-size: 13px; }</style>
     <title id="loop-lab-metrics-title">WizardLoop contribution calendar and recent public activity</title><desc id="loop-lab-metrics-description">A full-year isometric contribution calendar, streak statistics, and up to three recent public GitHub events. Generated from GitHub API data and lowlighter metrics.</desc><style id="loop-lab-palette">
       :root { background: #ffffff; color: #242133; }
       .items-wrapper { background: #ffffff; border-color: #e4ddee; color: #242133; }
@@ -3711,4 +3708,4 @@ h3 { font-size: 13px; }
         </div>
         <div xmlns="http://www.w3.org/1999/xhtml" id="metrics-end"></div>
     </foreignObject>
-<g id="loop-lab-public-activity"><rect x="0.5" y="316.0" width="479" height="260.0" rx="16" fill="#ffffff" stroke="#e4ddee"/><text x="26" y="346.0" font-size="16" font-weight="600" fill="#7145ad">Recent activity</text><g class="activity" data-url="https://github.com/WizardLoop/shabbat/releases"><text x="26" y="376.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Published a release (v3.1.1) in</tspan><tspan x="26" dy="22">WizardLoop/shabbat</tspan></text><text x="26" y="419.0" font-size="12" fill="#615b72">2026-10-23</text></g><g class="activity" data-url="https://github.com/WizardLoop/shabbat/pull/24"><text x="26" y="456.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Opened pull request #24 in WizardLoop/shabbat</tspan></text><text x="26" y="477.0" font-size="12" fill="#615b72">2026-10-23</text></g><g class="activity" data-url="https://github.com/WizardLoop/shabbat"><text x="26" y="514.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Pushed updates to WizardLoop/shabbat</tspan></text><text x="26" y="535.0" font-size="12" fill="#615b72">2026-10-22</text></g></g></svg>
+<g id="loop-lab-public-activity"><rect x="0.5" y="316.0" width="479" height="260.0" rx="16" fill="#ffffff" stroke="#e4ddee"/><text x="26" y="346.0" font-size="16" font-weight="600" fill="#7145ad">Recent activity</text><g class="activity" data-url="https://github.com/WizardLoop/shabbat"><text x="26" y="376.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Pushed updates to WizardLoop/shabbat</tspan></text><text x="26" y="397.0" font-size="12" fill="#615b72">2026-10-23</text></g><g class="activity" data-url="https://github.com/WizardLoop/shabbat/releases"><text x="26" y="434.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Published a release (v3.1.1) in</tspan><tspan x="26" dy="22">WizardLoop/shabbat</tspan></text><text x="26" y="477.0" font-size="12" fill="#615b72">2026-10-23</text></g><g class="activity" data-url="https://github.com/WizardLoop/shabbat/pull/24"><text x="26" y="514.0" font-size="16" fill="#242133"><tspan x="26" dy="0">Opened pull request #24 in WizardLoop/shabbat</tspan></text><text x="26" y="535.0" font-size="12" fill="#615b72">2026-10-23</text></g></g></svg>
