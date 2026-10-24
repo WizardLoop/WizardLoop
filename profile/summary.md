@@ -7,7 +7,7 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 
 - Total Stars Earned: **79**
 - Total Commits (last year): **293**
-- Total PRs: **50**
+- Total PRs: **51**
 - Total Issues: **2**
 - Contributed to (last year): **13**
 
