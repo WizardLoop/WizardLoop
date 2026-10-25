@@ -27,17 +27,18 @@ Language percentages describe analyzed repository content, not proficiency or co
 
 The isometric view covers the last year of GitHub contributions. These totals may include private contribution aggregates visible to the existing metrics token; private project names are not shown.
 
+- Current streak 1 day
 - Best streak 4 days
 - Highest in a day at 45
-- Average per day at ~0.92
+- Average per day at ~0.97
 
 GitHub contribution counts can include commits, issues, pull requests, and reviews.
 
 ## Recent public activity
 
 - [Pushed updates to WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat)
+- [Pushed updates to WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat)
 - [Published a release (v3.1.1) in WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat/releases)
-- [Opened pull request \#24 in WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat/pull/24)
 
 The activity feed includes at most three public events from the past 90 days.
 Profile-repository updates and common automation bots are excluded.
