@@ -27,10 +27,9 @@ Language percentages describe analyzed repository content, not proficiency or co
 
 The isometric view covers the last year of GitHub contributions. These totals may include private contribution aggregates visible to the existing metrics token; private project names are not shown.
 
-- Current streak 1 day
 - Best streak 4 days
 - Highest in a day at 45
-- Average per day at ~0.97
+- Average per day at ~0.99
 
 GitHub contribution counts can include commits, issues, pull requests, and reviews.
 
