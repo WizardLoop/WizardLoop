@@ -7,9 +7,9 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 
 - Total Stars Earned: **79**
 - Total Commits (last year): **305**
-- Total PRs: **53**
+- Total PRs: **54**
 - Total Issues: **2**
-- Contributed to (last year): **13**
+- Contributed to (last year): **14**
 - GitHub Readme Stats grade: **B**
 
 ## Top languages
@@ -35,9 +35,9 @@ GitHub contribution counts can include commits, issues, pull requests, and revie
 
 ## Recent public activity
 
+- [Opened pull request \#2 in WizardLoop/wizardloop.github.io 2026-10-27](https://github.com/WizardLoop/wizardloop.github.io/pull/2)
 - [Pushed updates to WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat)
 - [Pushed updates to WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat)
-- [Published a release (v3.1.1) in WizardLoop/shabbat 2026-10-23](https://github.com/WizardLoop/shabbat/releases)
 
 The activity feed includes at most three public events from the past 90 days.
 Profile-repository updates and common automation bots are excluded.
