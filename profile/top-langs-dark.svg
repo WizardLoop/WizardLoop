@@ -137,7 +137,7 @@
           data-testid="lang-progress"
           x="0"
           y="0"
-          width="377.77"
+          width="341.51"
           height="8"
           fill="#4F5D95"
         />
@@ -145,9 +145,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="377.77"
+          x="341.51"
           y="0"
-          width="10.15"
+          width="18.1"
           height="8"
           fill="#3572A5"
         />
@@ -155,29 +155,9 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="387.91999999999996"
+          x="359.61"
           y="0"
-          width="14.07"
-          height="8"
-          fill="#555555"
-        />
-
-        <rect
-          mask="url(#rect-mask)"
-          data-testid="lang-progress"
-          x="391.98999999999995"
-          y="0"
-          width="12.04"
-          height="8"
-          fill="#e34c26"
-        />
-
-        <rect
-          mask="url(#rect-mask)"
-          data-testid="lang-progress"
-          x="394.03"
-          y="0"
-          width="10.61"
+          width="19.810000000000002"
           height="8"
           fill="#f1e05a"
         />
@@ -185,11 +165,31 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="394.64"
+          x="369.42"
           y="0"
-          width="10.37"
+          width="19.32"
           height="8"
-          fill="#384d54"
+          fill="#3178c6"
+        />
+
+        <rect
+          mask="url(#rect-mask)"
+          data-testid="lang-progress"
+          x="378.74"
+          y="0"
+          width="18.869999999999997"
+          height="8"
+          fill="#e34c26"
+        />
+
+        <rect
+          mask="url(#rect-mask)"
+          data-testid="lang-progress"
+          x="387.61"
+          y="0"
+          width="17.4"
+          height="8"
+          fill="#663399"
         />
 
 
@@ -198,42 +198,42 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#4F5D95" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        PHP 95.64%
+        PHP 86.46%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        Python 2.57%
+        Python 4.58%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms">
-      <circle cx="5" cy="6" r="5" fill="#555555" />
+      <circle cx="5" cy="6" r="5" fill="#f1e05a" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        C 1.03%
+        JavaScript 2.48%
       </text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
-      <circle cx="5" cy="6" r="5" fill="#e34c26" />
+      <circle cx="5" cy="6" r="5" fill="#3178c6" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        HTML 0.52%
+        TypeScript 2.36%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
-      <circle cx="5" cy="6" r="5" fill="#f1e05a" />
+      <circle cx="5" cy="6" r="5" fill="#e34c26" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        JavaScript 0.16%
+        HTML 2.25%
       </text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms">
-      <circle cx="5" cy="6" r="5" fill="#384d54" />
+      <circle cx="5" cy="6" r="5" fill="#663399" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name' font-family="Arial, Helvetica, sans-serif">
-        Dockerfile 0.09%
+        CSS 1.87%
       </text>
     </g>
   </g></g>
