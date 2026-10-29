@@ -5,21 +5,21 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 
 ## GitHub stats
 
-- Total Stars Earned: **79**
-- Total Commits (last year): **311**
-- Total PRs: **55**
+- Total Stars Earned: **80**
+- Total Commits (last year): **329**
+- Total PRs: **58**
 - Total Issues: **2**
 - Contributed to (last year): **14**
 - GitHub Readme Stats grade: **B**
 
 ## Top languages
 
-- PHP 86.46%
-- Python 4.58%
-- JavaScript 2.48%
-- TypeScript 2.36%
-- HTML 2.25%
-- CSS 1.87%
+- PHP 89.25%
+- Python 2.40%
+- HTML 2.32%
+- TypeScript 2.25%
+- JavaScript 1.96%
+- CSS 1.83%
 
 Language percentages describe analyzed repository content, not proficiency or coding time.
 
@@ -27,18 +27,18 @@ Language percentages describe analyzed repository content, not proficiency or co
 
 The isometric view covers the last year of GitHub contributions. These totals may include private contribution aggregates visible to the existing metrics token; private project names are not shown.
 
-- Current streak 1 day
+- Current streak 2 days
 - Best streak 4 days
 - Highest in a day at 45
-- Average per day at ~0.99
+- Average per day at ~1.04
 
 GitHub contribution counts can include commits, issues, pull requests, and reviews.
 
 ## Recent public activity
 
-- [Closed pull request \#2 in WizardLoop/wizardloop.github.io 2026-10-27](https://github.com/WizardLoop/wizardloop.github.io/pull/2)
-- [Opened pull request \#3 in WizardLoop/wizardloop.github.io 2026-10-28](https://github.com/WizardLoop/wizardloop.github.io/pull/3)
-- [Opened pull request \#2 in WizardLoop/wizardloop.github.io 2026-10-27](https://github.com/WizardLoop/wizardloop.github.io/pull/2)
+- [Pushed updates to WizardLoop/wizardloop.github.io 2026-10-28](https://github.com/WizardLoop/wizardloop.github.io)
+- [Pushed updates to WizardLoop/wizardloop.github.io 2026-10-28](https://github.com/WizardLoop/wizardloop.github.io)
+- [Pushed updates to WizardLoop/wizardloop.github.io 2026-10-28](https://github.com/WizardLoop/wizardloop.github.io)
 
 The activity feed includes at most three public events from the past 90 days.
 Profile-repository updates and common automation bots are excluded.
