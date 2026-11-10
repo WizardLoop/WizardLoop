@@ -10,7 +10,7 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 - Total PRs: **59**
 - Total Issues: **2**
 - Contributed to (last year): **15**
-- GitHub Readme Stats grade: **B**
+- GitHub Readme Stats grade: **B+**
 
 ## Top languages
 
