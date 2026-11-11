@@ -5,7 +5,7 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 
 ## GitHub stats
 
-- Total Stars Earned: **83**
+- Total Stars Earned: **82**
 - Total Commits (last year): **329**
 - Total PRs: **59**
 - Total Issues: **2**
