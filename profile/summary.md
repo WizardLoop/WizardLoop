@@ -29,7 +29,7 @@ The isometric view covers the last year of GitHub contributions. These totals ma
 
 - Best streak 4 days
 - Highest in a day at 45
-- Average per day at ~1.07
+- Average per day at ~1.06
 
 GitHub contribution counts can include commits, issues, pull requests, and reviews.
 
