@@ -9,7 +9,7 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 - Total Commits (last year): **329**
 - Total PRs: **59**
 - Total Issues: **2**
-- Contributed to (last year): **15**
+- Contributed to (last year): **14**
 - GitHub Readme Stats grade: **B+**
 
 ## Top languages
