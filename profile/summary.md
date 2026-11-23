@@ -6,11 +6,11 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 ## GitHub stats
 
 - Total Stars Earned: **81**
-- Total Commits (last year): **329**
+- Total Commits (last year): **315**
 - Total PRs: **59**
 - Total Issues: **2**
 - Contributed to (last year): **14**
-- GitHub Readme Stats grade: **B+**
+- GitHub Readme Stats grade: **B**
 
 ## Top languages
 
@@ -29,7 +29,7 @@ The isometric view covers the last year of GitHub contributions. These totals ma
 
 - Best streak 4 days
 - Highest in a day at 45
-- Average per day at ~1.06
+- Average per day at ~1.03
 
 GitHub contribution counts can include commits, issues, pull requests, and reviews.
 
