@@ -5,21 +5,21 @@ Figures update with the cards; an unsuccessful refresh keeps the previous comple
 
 ## GitHub stats
 
-- Total Stars Earned: **81**
-- Total Commits (last year): **315**
-- Total PRs: **59**
+- Total Stars Earned: **82**
+- Total Commits (last year): **323**
+- Total PRs: **60**
 - Total Issues: **2**
 - Contributed to (last year): **14**
-- GitHub Readme Stats grade: **B**
+- GitHub Readme Stats grade: **B+**
 
 ## Top languages
 
-- PHP 89.25%
-- Python 2.40%
-- HTML 2.32%
-- TypeScript 2.25%
-- JavaScript 1.96%
-- CSS 1.83%
+- PHP 89.40%
+- Python 2.36%
+- HTML 2.28%
+- TypeScript 2.21%
+- JavaScript 1.93%
+- CSS 1.80%
 
 Language percentages describe analyzed repository content, not proficiency or coding time.
 
@@ -35,9 +35,9 @@ GitHub contribution counts can include commits, issues, pull requests, and revie
 
 ## Recent public activity
 
-- [Pushed updates to WizardLoop/telegram- draft-pocket 2026-11-17](https://github.com/WizardLoop/telegram-draft-pocket)
-- [Pushed updates to WizardLoop/telegram- draft-pocket 2026-11-17](https://github.com/WizardLoop/telegram-draft-pocket)
-- [Pushed updates to WizardLoop/telegram- draft-pocket 2026-11-13](https://github.com/WizardLoop/telegram-draft-pocket)
+- [Closed pull request \#28 in WizardLoop/shabbat 2026-11-26](https://github.com/WizardLoop/shabbat/pull/28)
+- [Closed pull request \#20 in WizardLoop/shabbat 2026-11-26](https://github.com/WizardLoop/shabbat/pull/20)
+- [Closed pull request \#19 in WizardLoop/shabbat 2026-11-26](https://github.com/WizardLoop/shabbat/pull/19)
 
 The activity feed includes at most three public events from the past 90 days.
 Profile-repository updates and common automation bots are excluded.
